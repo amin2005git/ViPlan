@@ -1,10 +1,22 @@
 model,split,success rate,accuracy,cot,success rate error,accuracy error
+Cosmos-Reason2 8B,simple,0.16,0.57,no,0.07,0.01
+Cosmos-Reason2 8B,medium,0.0,0.65,no,0.0,0.01
+Cosmos-Reason2 8B,hard,0.0,0.5,no,0.0,0.01
 InternVL3 78B,simple,0.12,0.71,no,0.06,0.01
 InternVL3 78B,medium,0.0,0.68,no,0.0,0.01
 InternVL3 78B,hard,0.0,0.65,no,0.0,0.01
 InternVL3 8B,simple,0.0,0.73,no,0.0,0.01
 InternVL3 8B,medium,0.0,0.78,no,0.0,0.0
 InternVL3 8B,hard,0.04,0.78,no,0.04,0.01
+InternVL3.5 30B A3B,simple,0.16,0.68,no,0.07,0.01
+InternVL3.5 30B A3B,medium,0.0,0.73,no,0.0,0.01
+InternVL3.5 30B A3B,hard,0.0,0.68,no,0.0,0.01
+InternVL3.5 38B,simple,0.08,0.52,no,0.05,0.01
+InternVL3.5 38B,medium,0.04,0.55,no,0.04,0.01
+InternVL3.5 38B,hard,0.0,0.46,no,0.0,0.01
+InternVL3.5 8B,simple,0.08,0.69,no,0.05,0.01
+InternVL3.5 8B,medium,0.0,0.72,no,0.0,0.01
+InternVL3.5 8B,hard,0.0,0.68,no,0.0,0.01
 Mistral-Small-3.1 24B,simple,0.0,0.69,no,0.0,0.01
 Mistral-Small-3.1 24B,medium,0.0,0.83,no,0.0,0.0
 Mistral-Small-3.1 24B,hard,0.0,0.83,no,0.0,0.0
@@ -20,6 +32,12 @@ Qwen2.5-VL 72B,hard,0.0,0.78,no,0.0,0.0
 Qwen2.5-VL 7B,simple,0.0,0.73,no,0.0,0.01
 Qwen2.5-VL 7B,medium,0.04,0.81,no,0.04,0.0
 Qwen2.5-VL 7B,hard,0.0,0.82,no,0.0,0.0
+Qwen3-VL 30B A3B,simple,0.2,0.75,no,0.08,0.01
+Qwen3-VL 30B A3B,medium,0.0,0.72,no,0.0,0.01
+Qwen3-VL 30B A3B,hard,0.0,0.71,no,0.0,0.01
+Qwen3-VL 8B,simple,0.12,0.66,no,0.06,0.01
+Qwen3-VL 8B,medium,0.0,0.73,no,0.0,0.01
+Qwen3-VL 8B,hard,0.04,0.72,no,0.04,0.01
 AyaVision 32B,simple,0.04,0.61,no,0.04,0.02
 AyaVision 32B,medium,0.0,0.65,no,0.0,0.01
 AyaVision 32B,hard,0.0,0.65,no,0.0,0.01
@@ -47,12 +65,24 @@ LLaVA-Onevision 72B,hard,0.0,0.75,no,0.0,0.01
 LLaVA-Onevision 7B,simple,0.04,0.59,no,0.04,0.01
 LLaVA-Onevision 7B,medium,0.0,0.68,no,0.0,0.01
 LLaVA-Onevision 7B,hard,0.0,0.69,no,0.0,0.01
+Cosmos-Reason2 8B,simple,0.0,0.69,yes,0.0,0.01
+Cosmos-Reason2 8B,medium,0.0,0.72,yes,0.0,0.01
+Cosmos-Reason2 8B,hard,0.0,0.73,yes,0.0,0.01
 InternVL3 78B,simple,0.28,0.66,yes,0.09,0.01
 InternVL3 78B,medium,0.0,0.69,yes,0.0,0.01
 InternVL3 78B,hard,0.04,0.7,yes,0.04,0.01
 InternVL3 8B,simple,0.08,0.62,yes,0.05,0.01
 InternVL3 8B,medium,0.0,0.59,yes,0.0,0.01
 InternVL3 8B,hard,0.0,0.56,yes,0.0,0.01
+InternVL3.5 30B A3B,simple,0.04,0.72,yes,0.04,0.01
+InternVL3.5 30B A3B,medium,0.0,0.75,yes,0.0,0.01
+InternVL3.5 30B A3B,hard,0.0,0.76,yes,0.0,0.01
+InternVL3.5 38B,simple,0.08,0.68,yes,0.05,0.01
+InternVL3.5 38B,medium,0.0,0.66,yes,0.0,0.01
+InternVL3.5 38B,hard,0.12,0.69,yes,0.06,0.0
+InternVL3.5 8B,simple,0.04,0.65,yes,0.04,0.01
+InternVL3.5 8B,medium,0.0,0.7,yes,0.0,0.01
+InternVL3.5 8B,hard,0.0,0.71,yes,0.0,0.01
 Mistral-Small-3.1 24B,simple,0.04,0.6,yes,0.04,0.02
 Mistral-Small-3.1 24B,medium,0.0,0.64,yes,0.0,0.01
 Mistral-Small-3.1 24B,hard,0.0,0.67,yes,0.0,0.01
@@ -68,6 +98,12 @@ Qwen2.5-VL 72B,hard,0.0,0.76,yes,0.0,0.0
 Qwen2.5-VL 7B,simple,0.04,0.68,yes,0.04,0.01
 Qwen2.5-VL 7B,medium,0.0,0.73,yes,0.0,0.0
 Qwen2.5-VL 7B,hard,0.04,0.62,yes,0.04,0.0
+Qwen3-VL 30B A3B,simple,0.08,0.68,yes,0.05,0.01
+Qwen3-VL 30B A3B,medium,0.0,0.74,yes,0.0,0.01
+Qwen3-VL 30B A3B,hard,0.0,0.73,yes,0.0,0.0
+Qwen3-VL 8B,simple,0.04,0.76,yes,0.04,0.01
+Qwen3-VL 8B,medium,0.0,0.72,yes,0.0,0.01
+Qwen3-VL 8B,hard,0.0,0.74,yes,0.0,0.0
 AyaVision 32B,simple,0.04,0.72,yes,0.04,0.01
 AyaVision 32B,medium,0.0,0.75,yes,0.0,0.0
 AyaVision 32B,hard,0.0,0.74,yes,0.0,0.01

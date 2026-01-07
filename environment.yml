@@ -24,10 +24,10 @@ dependencies:
   - clang>=7,<20.0
   # CUDA versions are determined by pytorch
   - cudnn>=8.9.2,<10
-  - cuda-version>=12.4,<12.5
-  - cuda-compiler>=12.4,<12.5
-  - cuda-nvcc>=12.4,<12.5
-  - cuda-libraries-dev>=12.4,<12.5
+  - cuda-version>=12.6,<12.7
+  - cuda-compiler>=12.6,<12.7
+  - cuda-nvcc>=12.6,<12.7
+  - cuda-libraries-dev>=12.6,<12.7
   - cmake
   - llama-index
   - llama-index-llms-openai
@@ -39,11 +39,11 @@ dependencies:
   - flask
   - pip
   - pip:
-      - torch==2.6.0
-      - torchvision==0.21.0
-      - torchaudio==2.6.0
-      - --extra-index-url https://download.pytorch.org/whl/cu124
-      - vllm==0.8.3
+      - torch
+      - torchvision
+      - torchaudio
+      - --extra-index-url https://download.pytorch.org/whl/cu126
+      - vllm==0.12.0
       - peft
       - bitsandbytes
       - pymupdf4llm

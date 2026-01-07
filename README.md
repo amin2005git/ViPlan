@@ -114,6 +114,9 @@ As some of the assets are encrypted, you will need to download the key provided 
 
 After this, the iGibson environment is ready to be used. For the benchmark, we use a client-server architecture, where the server runs inside the container and the client runs in the main execution environment. Scripts are provided in the `sh_scripts` folder to run the server and the client.
 
+> [!WARNING]
+> iGibson will create many temporary files under `iGibson/igibson/data/ig_dataset/scene_instances`, which are not removed automatically. The folder is safe to delete to clear up space.
+
 ## Benchmark
 
 To run the benchmark, we provide bash scripts to run locally as well as SLURM scripts that can be used to run the experiments on a cluster. The scripts are located in the `sh_scripts` folder. If you are using a different cluster manager, you may need to modify the scripts at `sh_scripts/slurm_cluster` accordingly. You could also directly run the Python scripts in the `viplan/experiments` directory.

@@ -25,10 +25,10 @@ def get_completion(
     response = client.chat.completions.create(
         messages=messages,
         model=model,
-        max_tokens=max_tokens,
+        max_completion_tokens=max_tokens,
         temperature=temperature,
-        logprobs=logprobs,
-        top_logprobs=top_logprobs if logprobs else None,
+        logprobs=False,
+        # top_logprobs=top_logprobs if logprobs else None,
         n=1,
     )
     end = time.perf_counter()
@@ -117,3 +117,28 @@ class OpenAIModel:
             )
             results.append(output)
         return results
+
+class OpenAILLM:
+    def __init__(self, model_name="gpt-4.1-nano", temperature=0.0, **kwargs):
+        self.client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+        self.model_name = model_name
+        self.temperature = temperature
+
+    def get_completion(self, prompts, return_prompt=False, return_probs=False, **kwargs):
+        if isinstance(prompts, str):
+            prompts = [prompts]
+
+        all_messages = [get_messages(prompt) for prompt in prompts]
+
+        results = []
+        for prompt in all_messages:
+            output = get_completion(
+                client=self.client,
+                messages=prompt,
+                model=self.model_name,
+                temperature=self.temperature,
+                logprobs=return_probs,
+            )
+            results.append(output)
+        return results
+

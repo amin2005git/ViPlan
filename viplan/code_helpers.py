@@ -4,8 +4,136 @@ import glob
 import time
 import torch
 
-from typing import List, Dict, Tuple, Union
-from mloggers import LogLevel, ConsoleLogger, FileLogger, MultiLogger
+from typing import List, Dict, Tuple, Union, Any, Callable
+from mloggers import LogLevel, ConsoleLogger, FileLogger, MultiLogger, Logger
+from viplan.planning.planning_simulator import PlanningSimulator
+from unified_planning.model import Problem
+
+def get_domain_config(domain_name: str) -> Tuple[Callable[[Problem, Logger, Dict[str, Any]], PlanningSimulator], Dict[str, str], Dict[str, str], Dict[str, str], Dict[str, str], Callable[[List[os.PathLike], Dict[str, Any]], Any]]:
+    """
+    Returns the domain configuration for a given domain name.
+    Args:
+        domain_name (str): The name of the domain, case-insensitive. Supports "ViPlan-BW" (Blocksworld) and "ViPlan-HH" (Household).
+    Returns:
+        Tuple containing: simulator_factory, predicate_questions, argument_aliases, preds_templates, goal_templates, problem_iterator.
+    """
+    if domain_name.lower() == "viplan-bw":
+        from viplan.planning.blocksworld_simulator import BlocksworldSimulator
+        def simulator_factory(problem: Problem, logger: Logger, **kwargs) -> PlanningSimulator:
+            assert 'root_path' in kwargs, "root_path must be provided for Blocksworld simulator"
+            return BlocksworldSimulator(problem=problem,
+                                        logger=logger,
+                                        root_path=kwargs.get("root_path"),
+                                        seed=kwargs.get("seed", 1),
+                                        use_gpu_rendering=kwargs.get("gpu_rendering", True),
+                                        fail_probability=kwargs.get("fail_probability", 0.0),
+                                        )
+        predicate_questions = {
+            'on': 'Is the {0} on top of the {1}?',
+            'clear': 'Is the {0} the topmost of its column?',
+            'incolumn': 'Is the {0} in the {1}?',
+            'rightof': 'Is the {0} to the right of the {1}?',
+            'leftof': 'Is the {0} to the left of the {1}?',
+        }
+        argument_aliases = {
+            'r': 'red block',
+            'g': 'green block',
+            'b': 'blue block',
+            'y': 'yellow block',
+            'o': 'orange block',
+            'p': 'purple block',
+            'c1': 'column labeled "c1"',
+            'c2': 'column labeled "c2"',
+            'c3': 'column labeled "c3"',
+            'c4': 'column labeled "c4"',
+            'c5': 'column labeled "c5"',
+        }
+        preds_templates = None
+        goal_templates = {
+            'incolumn': {
+                True:  "The {0} needs to be in the {1}",
+                False: "the {0} must not be in the {1}"
+            },
+            'on': {
+                True:  "The {0} needs to be on top of the {1}",
+                False: "the {0} must not be on top of the {1}"
+            },
+            'clear': {
+                True:  "The {0} needs to be the topmost block in its column",
+                False: "the {0} must not be the topmost block in its column"
+            },
+        }
+        def problem_iterator(problem_files: List[os.PathLike], metadata: Dict[str, Any] = None):
+            for problem_file in problem_files:
+                yield problem_file, None, None
+
+    elif domain_name.lower() == "viplan-hh":
+        from viplan.planning.igibson_client_env import iGibsonClient
+        def simulator_factory(problem: Problem, logger: Logger, **kwargs) -> PlanningSimulator:
+            assert 'base_url' in kwargs, "base_url must be provided for iGibsonClient simulator"
+            assert 'task' in kwargs, "task must be provided for iGibsonClient simulator"
+            assert 'scene_id' in kwargs, "scene_id must be provided for iGibsonClient simulator"
+            assert 'instance_id' in kwargs, "instance_id must be provided for iGibsonClient simulator"
+            return iGibsonClient(problem=problem,
+                                 logger=logger,
+                                 task=kwargs.get("task"),
+                                 scene_id=kwargs.get("scene_id"),
+                                 instance_id=kwargs.get("instance_id"),
+                                 base_url=kwargs.get("base_url"),
+            )
+        predicate_questions = {
+            'reachable': "Is the {0} in reach of the agent?",
+            'holding':   "Is the agent holding the {0}?",
+            'open':      "Is the {0} open?",
+            'ontop':     "Is the {0} on top of the {1}?",
+            'inside':    "Is the {0} inside the {1}?",
+            'nextto':    "Is the {0} next to the {1}?",
+        }
+        argument_aliases = None
+        preds_templates = {
+            'reachable': "the {0} is reachable by the agent",
+            'holding':   "the agent is holding the {0}",
+            'open':      "the {0} is open",
+            'ontop':     "the {0} is on top of the {1}",
+            'inside':    "the {0} is inside the {1}",
+            'nextto':    "the {0} is next to the {1}",
+        }
+        goal_templates = {
+            'reachable': {
+                True:  "the {0} needs to be reachable by the agent",
+                False: "the {0} needs to be unreachable by the agent"
+            },
+            'holding': {
+                True:  "the agent needs to be holding the {0}",
+                False: "the agent must not be holding the {0}"
+            },
+            'open': {
+                True:  "the {0} needs to be open",
+                False: "the {0} needs to be closed"
+            },
+            'ontop': {
+                True:  "the {0} needs to be on top of the {1}",
+                False: "the {0} must not be on top of the {1}"
+            },
+            'inside': {
+                True:  "the {0} needs to be inside the {1}",
+                False: "the {0} must not be inside the {1}"
+            },
+            'nextto': {
+                True:  "the {0} needs to be next to the {1}",
+                False: "the {0} must not be next to the {1}"
+            }
+        }
+        def problem_iterator(problem_files: List[os.PathLike], metadata: Dict[str, Any]):
+            for problem_file in problem_files:
+                task = metadata[os.path.basename(problem_file)]['activity_name']
+                scene_instance_pairs = metadata[os.path.basename(problem_file)]['scene_instance_pairs']
+                for scene_id, instance_id in scene_instance_pairs:
+                    yield problem_file, scene_id, instance_id
+    else:
+        raise ValueError(f"Unknown domain name: {domain_name}. Supported domains are: 'ViPlan-BW' (Blocksworld) and 'ViPlan-HH' (Household).")
+
+    return simulator_factory, predicate_questions, argument_aliases, preds_templates, goal_templates, problem_iterator
 
 def get_unique_id(logger):
     array_job_id = os.environ.get("SLURM_ARRAY_JOB_ID")
@@ -128,24 +256,12 @@ def load_vlm(
     logger.info(f"Using dtype: {dtype}.")
     
     # Remove eventual duplicate args from kwargs
-    if "cache_dir" in kwargs:
-        kwargs.pop("cache_dir")
-    if "temperature" in kwargs:
-        kwargs.pop("temperature")
-    if "device" in kwargs:
-        kwargs.pop("device")
-    if "dtype" in kwargs:
-        kwargs.pop("dtype")
-    if "use_flash_attn" in kwargs:
-        kwargs.pop("use_flash_attn")
-    if "logger" in kwargs:
-        kwargs.pop("logger")
-    
+    for key in ("cache_dir", "temperature", "device", "dtype", "use_flash_attn", "logger"):
+        kwargs.pop(key, None)
+
     # VLLM parallelism
     # https://docs.vllm.ai/en/latest/serving/distributed_serving.html
-    tensor_parallel_size = kwargs.get("tensor_parallel_size", 1)
-    if "tensor_parallel_size" in kwargs:
-        kwargs.pop("tensor_parallel_size")
+    tensor_parallel_size = kwargs.pop("tensor_parallel_size", 1)
     
     if "gpt" in model_name.lower() or "o1" in model_name.lower() or "o3" in model_name.lower() or "o4" in model_name.lower():
         from viplan.models import OpenAIModel
@@ -159,13 +275,7 @@ def load_vlm(
     elif "gemma" in model_name.lower():
         from viplan.models import Gemma3Model
         model = Gemma3Model(model_name, cache_dir=hf_cache_dir, logger=logger, temperature=temperature, device=device, dtype=dtype, use_flash_attn=use_flash_attn, **kwargs)
-    elif "mistral-small" in model_name.lower():
-        from viplan.models import VllmVLM
-        model = VllmVLM(model_name, cache_dir=hf_cache_dir, logger=logger, tensor_parallel_size=tensor_parallel_size, temperature=temperature, device=device, dtype=dtype, use_flash_attn=use_flash_attn, **kwargs)
-    elif "deepseek-vl2" in model_name.lower():
-        from viplan.models import VllmVLM
-        model = VllmVLM(model_name, cache_dir=hf_cache_dir, logger=logger, tensor_parallel_size=tensor_parallel_size, temperature=temperature, device=device, dtype=dtype, use_flash_attn=use_flash_attn, **kwargs)
-    elif "internvl" in model_name.lower():
+    elif any(name in model_name.lower() for name in ("mistral-small", "deepseek-vl2", "internvl", "qwen", "cosmos", "aya", "llava")):
         from viplan.models import VllmVLM
         model = VllmVLM(model_name, cache_dir=hf_cache_dir, logger=logger, tensor_parallel_size=tensor_parallel_size, temperature=temperature, device=device, dtype=dtype, use_flash_attn=use_flash_attn, **kwargs)
     else:
@@ -342,15 +452,16 @@ def get_log_level(log_level: str) -> LogLevel:
     Raises:
         ValueError: If the log level is not recognized.
     """
+    level_map = {
+        "debug":   LogLevel.DEBUG,
+        "info":    LogLevel.INFO,
+        "warn":    LogLevel.WARN,
+        "warning": LogLevel.WARN,
+        "error":   LogLevel.ERROR,
+    }
     log_level = log_level.lower().strip()
-    if log_level == "debug":
-        return LogLevel.DEBUG
-    if log_level == "info":
-        return LogLevel.INFO
-    if log_level == "warning":
-        return LogLevel.WARNING
-    if log_level == "error":
-        return LogLevel.ERROR
+    if log_level in level_map:
+        return level_map[log_level]
     raise ValueError(f"Unknown log level: {log_level}. Valid log levels are: debug, info, warning and error.")
 
 def get_logger(log_level: str, log_file: str = None) -> MultiLogger:

@@ -4,12 +4,16 @@
 #SBATCH --mem=20G
 #SBATCH --gres=gpu:2
 #SBATCH --output=./slurm/%A_%a.out
-#SBATCH --array=0-14
+#SBATCH --array=0-26
 
 # Define the list of models and problem splits.
 models=(
   "OpenGVLab/InternVL3-78B"
+  "OpenGVLab/InternVL3_5-30B-A3B"
+  "OpenGVLab/InternVL3_5-38B"
   "Qwen/Qwen2.5-VL-72B-Instruct"
+  "Qwen/Qwen3-VL-30B-A3B-Instruct"
+  "Qwen/Qwen3-VL-32B-Instruct"
   "google/gemma-3-27b-it"
   "llava-hf/llava-onevision-qwen2-72b-ov-hf"
   "CohereLabs/aya-vision-32b"
@@ -34,6 +38,7 @@ model_short="${MODEL##*/}"
 # Default values for flags
 GPU_RENDERING=true           # default value: can be true or false
 ENUMERATE_INITIAL_STATE=true # default value: can be true or false
+INCLUDE_PROMPT_HISTORY=false
 SEED=1                       # default seed value
 ENUM_BATCH_SIZE=4            # default batch size
 FAIL_PROBABILITY=0.0         # default fail probability
@@ -61,6 +66,10 @@ while [[ $# -gt 0 ]]; do
     --enum_batch_size)
       ENUM_BATCH_SIZE="$2"
       shift 2
+      ;;
+    --include_prompt_history)
+      INCLUDE_PROMPT_HISTORY="true"
+      shift
       ;;
     --fail_probability)
       FAIL_PROBABILITY="$2"
@@ -108,11 +117,17 @@ if [[ "$ENUMERATE_INITIAL_STATE" == "true" || "$ENUMERATE_INITIAL_STATE" == true
     enumerate_flag="--enumerate_initial_state"
 fi
 
-python3 -m viplan.experiments.benchmark_blocksworld_plan \
+history_flag=""
+if [[ "$INCLUDE_PROMPT_HISTORY" == "true" || "$INCLUDE_PROMPT_HISTORY" == true ]]; then
+  history_flag="--include_prompt_history"
+fi
+
+python3 -m viplan.experiments.benchmark_vlm_as_grounder \
   --model_name "$MODEL" \
-  --log_level "debug" \
+  --log_level "info" \
   --root_path "$ROOT_PATH" \
   --prompt_path "$PROMPT_PATH" \
+  --domain_name "viplan-bw" \
   --domain_file "$DOMAIN_FILE" \
   --problems_dir "$PROBLEMS_DIR" \
   --output_dir "$OUTPUT_DIR" \
@@ -120,4 +135,4 @@ python3 -m viplan.experiments.benchmark_blocksworld_plan \
   --enum_batch_size "$ENUM_BATCH_SIZE" \
   --tensor_parallel_size 2 \
   --fail_probability "$FAIL_PROBABILITY" \
-  $gpu_flag $enumerate_flag \
+  $gpu_flag $enumerate_flag $history_flag \

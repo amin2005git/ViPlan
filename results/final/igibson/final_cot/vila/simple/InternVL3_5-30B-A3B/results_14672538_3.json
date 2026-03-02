@@ -1,1 +1,2147 @@
-{"data/planning/igibson/simple/cleaning_out_drawers_simple.pddl_Benevolence_1_int_0": {"plans": [], "actions": [], "previous_actions": [], "completed": false}, "data/planning/igibson/simple/cleaning_out_drawers_simple.pddl_Benevolence_1_int_20": {"plans": [{"explanation": "To place bowl_1 on top of sink_1, I need to first access bowl_1 from cabinet_1. Since cabinet_1 is closed, I must open it. After opening, I can grasp bowl_1 and then navigate to sink_1 to place it there.", "plan": [{"action": "navigate-to", "parameters": ["cabinet_1"]}, {"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["bowl_1"]}, {"action": "navigate-to", "parameters": ["sink_1"]}, {"action": "place-on", "parameters": ["bowl_1", "sink_1"]}]}, {"explanation": "To place bowl_1 on top of sink_1, I first need to access bowl_1 from cabinet_1. Since cabinet_1 is already navigated to, the next step is to open it to make bowl_1 reachable. Then, I can grasp bowl_1, navigate to sink_1, and use place-on to position it correctly.", "plan": [{"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["bowl_1"]}, {"action": "navigate-to", "parameters": ["sink_1"]}, {"action": "place-on", "parameters": ["bowl_1", "sink_1"]}]}], "actions": [{"action": "navigate-to(cabinet_1)", "success": true, "info": "success"}, {"action": "open-container(cabinet_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["cabinet_1"], "outcome": "executed"}, {"action": "open-container", "parameters": ["cabinet_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/cleaning_out_drawers_simple.pddl_Benevolence_1_int_21": {"plans": [{"explanation": "To place bowl_1 on top of sink_1, I need to first access bowl_1 from cabinet_1. Since cabinet_1 is closed, I must open it. After opening, I can grasp bowl_1 and then navigate to sink_1 to place it there.", "plan": [{"action": "navigate-to", "parameters": ["cabinet_1"]}, {"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["bowl_1"]}, {"action": "navigate-to", "parameters": ["sink_1"]}, {"action": "place-on", "parameters": ["bowl_1", "sink_1"]}]}, {"explanation": "To place bowl_1 on top of sink_1, I first need to access bowl_1 from cabinet_1. Since cabinet_1 is already navigated to, the next step is to open it to make its contents reachable. Then, I can grasp bowl_1, navigate to sink_1, and use place-on to position bowl_1 on sink_1.", "plan": [{"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["bowl_1"]}, {"action": "navigate-to", "parameters": ["sink_1"]}, {"action": "place-on", "parameters": ["bowl_1", "sink_1"]}]}], "actions": [{"action": "navigate-to(cabinet_1)", "success": true, "info": "success"}, {"action": "open-container(cabinet_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["cabinet_1"], "outcome": "executed"}, {"action": "open-container", "parameters": ["cabinet_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/cleaning_out_drawers_simple.pddl_Rs_int_0": {"plans": [{"explanation": "To achieve the goal of placing the bowl_1 on top of the sink_1, we need to navigate to the cabinet_1, open it, grasp the bowl_1, navigate to the sink_1, and then place the bowl_1 on top of the sink_1.", "plan": [{"action": "navigate-to", "parameters": ["cabinet_1"]}, {"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["bowl_1"]}, {"action": "navigate-to", "parameters": ["sink_1"]}, {"action": "place-on", "parameters": ["bowl_1", "sink_1"]}]}, {"explanation": "The goal is to place bowl_1 on top of sink_1. Since bowl_1 is inside cabinet_1, the first step is to open cabinet_1 to access its contents. After opening, grasp bowl_1, then navigate to sink_1, and finally place bowl_1 on sink_1 using the place-on action.", "plan": [{"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["bowl_1"]}, {"action": "navigate-to", "parameters": ["sink_1"]}, {"action": "place-on", "parameters": ["bowl_1", "sink_1"]}]}, {"explanation": "The agent has opened `cabinet_1` and needs to grasp `bowl_1` from it. After grasping `bowl_1`, the agent should navigate to `sink_1` and place `bowl_1` on top of it. This sequence ensures that `bowl_1` is correctly positioned on `sink_1`.", "plan": [{"action": "grasp", "parameters": ["bowl_1"]}, {"action": "navigate-to", "parameters": ["sink_1"]}, {"action": "place-on", "parameters": ["bowl_1", "sink_1"]}]}, {"explanation": "The agent has already grasped bowl_1 from cabinet_1. To place it on the sink_1, the agent needs to navigate to the sink_1 first, ensuring it is within reach. Then, the agent can use the 'place-on' action to position bowl_1 on top of sink_1.", "plan": [{"action": "navigate-to", "parameters": ["sink_1"]}, {"action": "place-on", "parameters": ["bowl_1", "sink_1"]}]}, {"explanation": "The agent has already navigated to cabinet_1, opened it, grasped bowl_1, and moved to sink_1. The next logical step is to place bowl_1 on top of sink_1 using the 'place-on' action, as the prerequisites for this action are satisfied: the agent is holding bowl_1 and sink_1 is within reach.", "plan": [{"action": "place-on", "parameters": ["bowl_1", "sink_1"]}]}], "actions": [{"action": "navigate-to(cabinet_1)", "success": true, "info": "success"}, {"action": "open-container(cabinet_1)", "success": true, "info": "success"}, {"action": "grasp(bowl_1)", "success": true, "info": "success"}, {"action": "navigate-to(sink_1)", "success": true, "info": "success"}, {"action": "place-on(bowl_1, sink_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["cabinet_1"], "outcome": "executed"}, {"action": "open-container", "parameters": ["cabinet_1"], "outcome": "executed"}, {"action": "grasp", "parameters": ["bowl_1"], "outcome": "executed"}, {"action": "navigate-to", "parameters": ["sink_1"], "outcome": "executed"}, {"action": "place-on", "parameters": ["bowl_1", "sink_1"], "outcome": "executed"}], "completed": true}, "data/planning/igibson/simple/cleaning_out_drawers_simple.pddl_Rs_int_20": {"plans": [{"explanation": "To achieve the goal of placing the bowl_1 on top of the sink_1, we need to first navigate to the cabinet_1, open it, grasp the bowl_1, navigate to the sink_1, and finally place the bowl_1 on top of the sink_1.", "plan": [{"action": "navigate-to", "parameters": ["cabinet_1"]}, {"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["bowl_1"]}, {"action": "navigate-to", "parameters": ["sink_1"]}, {"action": "place-on", "parameters": ["bowl_1", "sink_1"]}]}], "actions": [{"action": "navigate-to(cabinet_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["cabinet_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/sorting_books_simple.pddl_Ihlen_0_int_0": {"plans": [{"explanation": "To achieve the goal of placing the hardback_1 on top of the shelf_1, I need to first locate and grasp the hardback_1, then navigate to the shelf_1, and finally place the hardback_1 on the shelf_1.", "plan": [{"action": "navigate-to", "parameters": ["hardback_1"]}, {"action": "grasp", "parameters": ["hardback_1"]}, {"action": "navigate-to", "parameters": ["shelf_1"]}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}, {"explanation": "The agent has already navigated to hardback_1. The next step is to grasp hardback_1 to pick it up. After grasping, the agent needs to navigate to shelf_1 to reach it. Finally, the agent can place hardback_1 on top of shelf_1 using the place-on action.", "plan": [{"action": "grasp", "parameters": ["hardback_1"]}, {"action": "navigate-to", "parameters": ["shelf_1"]}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}, {"explanation": "The agent has already grasped the hardback_1. To place it on the shelf_1, the agent needs to navigate to the shelf_1 first since it's not currently in reach. Once at the shelf, the agent can use the place-on action to put the book on top of it.", "plan": [{"action": "navigate-to", "parameters": ["shelf_1"]}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}, {"explanation": "The agent has already grasped the hardback_1 and navigated to the shelf_1. The next logical step is to place the hardback_1 on top of the shelf_1 using the 'place-on' action, as the preconditions are satisfied.", "plan": [{"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}, {"explanation": "The previous actions successfully navigated to the hardback_1, grasped it, moved to shelf_1, and placed the hardback_1 on top of shelf_1. Since the 'place-on' action was marked as executed, the goal is achieved. No further actions are needed.", "plan": []}, {"explanation": "The goal was to place hardback_1 on top of shelf_1. The sequence of actions successfully navigated to hardback_1, grasped it, moved to shelf_1, and placed hardback_1 on shelf_1. The final invalid 'place-on' action without parameters is unnecessary and caused an error, but the task was already completed correctly in the prior step.", "plan": [{"action": "navigate-to", "parameters": ["hardback_1"]}, {"action": "grasp", "parameters": ["hardback_1"]}, {"action": "navigate-to", "parameters": ["shelf_1"]}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}], "actions": [{"action": "navigate-to(hardback_1)", "success": true, "info": "success"}, {"action": "grasp(hardback_1)", "success": true, "info": "success"}, {"action": "navigate-to(shelf_1)", "success": true, "info": "success"}, {"action": "place-on(hardback_1, shelf_1)", "success": true, "info": "executed but failed"}, {"action": "unknown action", "success": false}, {"action": "navigate-to(hardback_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["hardback_1"], "outcome": "executed"}, {"action": "grasp", "parameters": ["hardback_1"], "outcome": "executed"}, {"action": "navigate-to", "parameters": ["shelf_1"], "outcome": "executed"}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"], "outcome": "executed"}, {"action": "place-on", "outcome": "action does not exist"}, {"action": "navigate-to", "parameters": ["hardback_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/sorting_books_simple.pddl_Ihlen_0_int_20": {"plans": [], "actions": [], "previous_actions": [], "completed": false}, "data/planning/igibson/simple/sorting_books_simple.pddl_Pomaria_1_int_0": {"plans": [{"explanation": "The plan involves navigating to the location of hardback_1, grasping it, navigating to the location of shelf_1, and placing hardback_1 on top of shelf_1.", "plan": [{"action": "navigate-to", "parameters": ["hardback_1"]}, {"action": "grasp", "parameters": ["hardback_1"]}, {"action": "navigate-to", "parameters": ["shelf_1"]}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}, {"explanation": "The agent has already navigated to hardback_1, making it reachable. The next step is to grasp hardback_1 to pick it up. Afterward, the agent needs to navigate to shelf_1, which may require moving to a different location in the environment. Once shelf_1 is reachable, the agent can place hardback_1 on top of it using the place-on action.", "plan": [{"action": "grasp", "parameters": ["hardback_1"]}, {"action": "navigate-to", "parameters": ["shelf_1"]}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}, {"explanation": "The agent has already grasped hardback_1. To place it on shelf_1, the agent must first navigate to shelf_1, which is likely in the background. Once there, the agent can use the 'place-on' action to position hardback_1 on top of shelf_1.", "plan": [{"action": "navigate-to", "parameters": ["shelf_1"]}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}, {"explanation": "The agent has successfully grasped the hardback_1 and navigated to the shelf_1. The next logical step is to place the hardback_1 on top of the shelf_1 using the 'place-on' action, as both the held object and the target support are reachable.", "plan": [{"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}], "actions": [{"action": "navigate-to(hardback_1)", "success": true, "info": "success"}, {"action": "grasp(hardback_1)", "success": true, "info": "success"}, {"action": "navigate-to(shelf_1)", "success": true, "info": "success"}, {"action": "place-on(hardback_1, shelf_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["hardback_1"], "outcome": "executed"}, {"action": "grasp", "parameters": ["hardback_1"], "outcome": "executed"}, {"action": "navigate-to", "parameters": ["shelf_1"], "outcome": "executed"}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"], "outcome": "executed"}], "completed": true}, "data/planning/igibson/simple/sorting_books_simple.pddl_Pomaria_1_int_20": {"plans": [{"explanation": "The plan involves navigating to the location of hardback_1, grasping it, navigating to shelf_1, and placing hardback_1 on top of shelf_1.", "plan": [{"action": "navigate-to", "parameters": ["table_1"]}, {"action": "grasp", "parameters": ["hardback_1"]}, {"action": "navigate-to", "parameters": ["shelf_1"]}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}, {"explanation": "The agent needs to move the `hardback_1` from `table_1` to `shelf_1`. This involves grasping `hardback_1`, navigating to `shelf_1`, and placing `hardback_1` on top of `shelf_1`.", "plan": [{"action": "grasp", "parameters": ["hardback_1"]}, {"action": "navigate-to", "parameters": ["shelf_1"]}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}, {"explanation": "The agent has already grasped the hardback_1 and needs to place it on the shelf_1. The next step is to navigate to shelf_1 to make it reachable, and then place the hardback_1 on top of it.", "plan": [{"action": "navigate-to", "parameters": ["shelf_1"]}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}, {"explanation": "The agent has already navigated to the table, grasped the hardback_1, and moved to the shelf_1. The next logical step is to place the hardback_1 on top of the shelf_1 using the 'place-on' action, as the agent is holding the book and the shelf is within reach.", "plan": [{"action": "place-on", "parameters": ["hardback_1", "shelf_1"]}]}], "actions": [{"action": "navigate-to(table_1)", "success": true, "info": "success"}, {"action": "grasp(hardback_1)", "success": true, "info": "success"}, {"action": "navigate-to(shelf_1)", "success": true, "info": "success"}, {"action": "place-on(hardback_1, shelf_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["table_1"], "outcome": "executed"}, {"action": "grasp", "parameters": ["hardback_1"], "outcome": "executed"}, {"action": "navigate-to", "parameters": ["shelf_1"], "outcome": "executed"}, {"action": "place-on", "parameters": ["hardback_1", "shelf_1"], "outcome": "executed"}], "completed": true}, "data/planning/igibson/simple/sorting_books_simple.pddl_Rs_int_0": {"plans": [], "actions": [], "previous_actions": [], "completed": false}, "data/planning/igibson/simple/locking_every_door_simple.pddl_Merom_1_int_0": {"plans": [{"explanation": "The goal is to close both door_1 and door_2. Since both doors are not visible in the current view, I need to navigate to each door to make them reachable and then close them.", "plan": [{"action": "navigate-to", "parameters": ["door_1"]}, {"action": "close-container", "parameters": ["door_1"]}, {"action": "navigate-to", "parameters": ["door_2"]}, {"action": "close-container", "parameters": ["door_2"]}]}, {"explanation": "The goal is to close both door_1 and door_2. Since door_1 is already open and reachable, the first action is to close it. After that, I need to navigate to door_2 to close it as well.", "plan": [{"action": "close-container", "parameters": ["door_1"]}, {"action": "navigate-to", "parameters": ["door_2"]}]}], "actions": [{"action": "navigate-to(door_1)", "success": true, "info": "success"}, {"action": "close-container(door_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["door_1"], "outcome": "executed"}, {"action": "close-container", "parameters": ["door_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/locking_every_door_simple.pddl_Merom_1_int_20": {"plans": [{"explanation": "The goal is to close both door_1 and door_2. Initially, the doors are not reachable, so the first step is to navigate to door_1, close it, then navigate to door_2 and close it.", "plan": [{"action": "navigate-to", "parameters": ["door_1"]}, {"action": "close-container", "parameters": ["door_1"]}, {"action": "navigate-to", "parameters": ["door_2"]}, {"action": "close-container", "parameters": ["door_2"]}]}, {"explanation": "The goal is to close both door_1 and door_2. Since I'm already at door_1, the first step is to close it using the 'close-container' action. This will make door_1 no longer reachable, and then I can navigate to door_2 to close it.", "plan": [{"action": "close-container", "parameters": ["door_1"]}]}, {"explanation": "The agent has already closed door_1. Now, the goal is to close door_2. Since door_2 is not currently in the agent's vicinity, the next step is to navigate to door_2. Once there, the agent can use the 'close-container' action to close it, assuming it is open. This ensures both doors are closed as required.", "plan": [{"action": "navigate-to", "parameters": ["door_2"]}, {"action": "close-container", "parameters": ["door_2"]}]}, {"explanation": "The agent has already closed door_1 and navigated to door_2. The next step is to close door_2, which is an open container. The close-container action is applicable here as the door is within reach and open.", "plan": [{"action": "close-container", "parameters": ["door_2"]}]}, {"explanation": "The goal requires closing both door_1 and door_2. The agent successfully navigated to each door and closed them using the 'close-container' action. Both actions were executed without failure, so no further steps are needed.", "plan": []}, {"explanation": "The goal was to close both door_1 and door_2. The actions taken to navigate to each door and close them were successful. The last action failed because it attempted to close a container without specifying which one, which is not relevant to the goal. Since the doors are already closed, no further actions are needed.", "plan": [{"action": "navigate-to", "parameters": ["door_1"]}, {"action": "close-container", "parameters": ["door_1"]}, {"action": "navigate-to", "parameters": ["door_2"]}, {"action": "close-container", "parameters": ["door_2"]}]}], "actions": [{"action": "navigate-to(door_1)", "success": true, "info": "success"}, {"action": "close-container(door_1)", "success": true, "info": "success"}, {"action": "navigate-to(door_2)", "success": true, "info": "success"}, {"action": "close-container(door_2)", "success": true, "info": "executed but failed"}, {"action": "unknown action", "success": false}, {"action": "navigate-to(door_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["door_1"], "outcome": "executed"}, {"action": "close-container", "parameters": ["door_1"], "outcome": "executed"}, {"action": "navigate-to", "parameters": ["door_2"], "outcome": "executed"}, {"action": "close-container", "parameters": ["door_2"], "outcome": "executed"}, {"action": "close-container", "outcome": "action does not exist"}, {"action": "navigate-to", "parameters": ["door_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/locking_every_door_simple.pddl_Pomaria_0_int_0": {"plans": [{"explanation": "The goal is to close both door_1 and door_2. Both doors are visible and reachable, so the agent can directly close them without needing to navigate further.", "plan": [{"action": "close-container", "parameters": ["door_1"]}, {"action": "close-container", "parameters": ["door_2"]}]}, {"explanation": "The goal is to close both `door_1` and `door_2`. The previous attempt to close `door_1` failed due to incorrect parameters. We need to correct this and then navigate to `door_2` to close it as well.", "plan": [{"action": "close-container", "parameters": ["door_1"]}, {"action": "navigate-to", "parameters": ["door_2"]}, {"action": "close-container", "parameters": ["door_2"]}]}], "actions": [{"action": "close-container(door_1)", "success": false, "info": "not legal"}, {"action": "close-container(door_1)", "success": false, "info": "not legal"}], "previous_actions": [{"action": "close-container", "parameters": ["door_1"], "outcome": "parameters incorrectly specified"}, {"action": "close-container", "parameters": ["door_1"], "outcome": "parameters incorrectly specified"}], "completed": false}, "data/planning/igibson/simple/locking_every_door_simple.pddl_Pomaria_0_int_20": {"plans": [{"explanation": "The goal is to close door_1 and door_2. Door_1 appears to be already closed. Door_2 is not visible, so we need to navigate to the stairs to access the other level where door_2 might be located. Once there, we will navigate to door_2 and close it.", "plan": [{"action": "navigate-to", "parameters": ["stairs"]}, {"action": "navigate-to", "parameters": ["door_2"]}, {"action": "close-container", "parameters": ["door_2"]}]}, {"explanation": "The goal is to close both door_1 and door_2. Initially, door_1 is visible and closed, so we can navigate to it and close it. Door_2 is not visible, so we need to navigate to it after closing door_1. The plan involves navigating to each door and closing it.", "plan": [{"action": "navigate-to", "parameters": ["door_1"]}, {"action": "close-container", "parameters": ["door_1"]}, {"action": "navigate-to", "parameters": ["door_2"]}, {"action": "close-container", "parameters": ["door_2"]}]}, {"explanation": "The agent is currently at door_1, which is open. The goal is to close both door_1 and door_2. The first step is to close door_1 since the agent is already there. After closing door_1, the agent needs to navigate to door_2 and close it as well.", "plan": [{"action": "close-container", "parameters": ["door_1"]}, {"action": "navigate-to", "parameters": ["door_2"]}, {"action": "close-container", "parameters": ["door_2"]}]}], "actions": [{"action": "navigate-to(stairs)", "success": false, "info": "Invalid action: Invalid format for name 'stairs'. Expected format like 'prefix_suffix'."}, {"action": "navigate-to(door_1)", "success": true, "info": "success"}, {"action": "close-container(door_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["stairs"], "outcome": "parameters incorrectly specified"}, {"action": "navigate-to", "parameters": ["door_1"], "outcome": "executed"}, {"action": "close-container", "parameters": ["door_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/locking_every_door_simple.pddl_Wainscott_1_int_0": {"plans": [{"explanation": "The goal is to close both door_1 and door_2. Since both doors are visible and not inside any containers, the agent can directly navigate to each door and close them. The plan involves navigating to door_1, closing it, then navigating to door_2, and closing it.", "plan": [{"action": "navigate-to", "parameters": ["door_1"]}, {"action": "close-container", "parameters": ["door_1"]}, {"action": "navigate-to", "parameters": ["door_2"]}, {"action": "close-container", "parameters": ["door_2"]}]}, {"explanation": "The goal is to close both door_1 and door_2. I have already navigated to door_1, so the next step is to close it. After that, I will navigate to door_2 and close it.", "plan": [{"action": "close-container", "parameters": ["door_1"]}, {"action": "navigate-to", "parameters": ["door_2"]}, {"action": "close-container", "parameters": ["door_2"]}]}], "actions": [{"action": "navigate-to(door_1)", "success": true, "info": "success"}, {"action": "close-container(door_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["door_1"], "outcome": "executed"}, {"action": "close-container", "parameters": ["door_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/locking_every_window_simple.pddl_Merom_1_int_0": {"plans": [], "actions": [], "previous_actions": [], "completed": false}, "data/planning/igibson/simple/locking_every_window_simple.pddl_Merom_1_int_20": {"plans": [], "actions": [], "previous_actions": [], "completed": false}, "data/planning/igibson/simple/locking_every_window_simple.pddl_Rs_int_0": {"plans": [], "actions": [], "previous_actions": [], "completed": false}, "data/planning/igibson/simple/locking_every_window_simple.pddl_Rs_int_20": {"plans": [], "actions": [], "previous_actions": [], "completed": false}, "data/planning/igibson/simple/locking_every_window_simple.pddl_Wainscott_0_int_0": {"plans": [], "actions": [], "previous_actions": [], "completed": false}, "data/planning/igibson/simple/packing_food_for_work_simple.pddl_Beechwood_0_int_0": {"plans": [{"explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to first navigate to the cabinet_1, open it, grasp the snack_food_1, navigate to the carton_1, open the carton_1, and finally place the snack_food_1 inside the carton_1.", "plan": [{"action": "navigate-to", "parameters": ["cabinet_1"]}, {"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["snack_food_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "open-container", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["snack_food_1", "carton_1"]}]}, {"explanation": "The goal is to move the `snack_food_1` from `cabinet_1` to `carton_1`. The first step is to open `cabinet_1` to access the `snack_food_1`. Then, we grasp the `snack_food_1` and navigate to `carton_1`. Finally, we place the `snack_food_1` inside `carton_1`.", "plan": [{"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["snack_food_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["snack_food_1", "carton_1"]}]}, {"explanation": "The agent needs to navigate to the electric_refrigerator_1, open it, grasp the snack_food_1, navigate to the carton_1, and place the snack_food_1 inside the carton_1.", "plan": [{"action": "navigate-to", "parameters": ["electric_refrigerator_1"]}, {"action": "open-container", "parameters": ["electric_refrigerator_1"]}, {"action": "grasp", "parameters": ["snack_food_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["snack_food_1", "carton_1"]}]}], "actions": [{"action": "navigate-to(cabinet_1)", "success": true, "info": "success"}, {"action": "open-container(cabinet_1)", "success": true, "info": "success"}, {"action": "navigate-to(electric_refrigerator_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["cabinet_1"], "outcome": "executed"}, {"action": "open-container", "parameters": ["cabinet_1"], "outcome": "executed"}, {"action": "navigate-to", "parameters": ["electric_refrigerator_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/packing_food_for_work_simple.pddl_Beechwood_0_int_20": {"plans": [{"explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to first navigate to the cabinet_1, open it, grasp the snack_food_1, navigate to the carton_1, open the carton_1, and finally place the snack_food_1 inside the carton_1.", "plan": [{"action": "navigate-to", "parameters": ["cabinet_1"]}, {"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["snack_food_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "open-container", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["snack_food_1", "carton_1"]}]}, {"explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to first open the cabinet_1 to access the snack_food_1. Then, we grasp the snack_food_1 and navigate to the carton_1. Finally, we place the snack_food_1 inside the carton_1.", "plan": [{"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["snack_food_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["snack_food_1", "carton_1"]}]}], "actions": [{"action": "navigate-to(cabinet_1)", "success": true, "info": "success"}, {"action": "open-container(cabinet_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["cabinet_1"], "outcome": "executed"}, {"action": "open-container", "parameters": ["cabinet_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/packing_food_for_work_simple.pddl_Beechwood_0_int_21": {"plans": [{"explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to first navigate to the cabinet_1, open it, grasp the snack_food_1, navigate to the carton_1, open the carton_1, and finally place the snack_food_1 inside the carton_1.", "plan": [{"action": "navigate-to", "parameters": ["cabinet_1"]}, {"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["snack_food_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "open-container", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["snack_food_1", "carton_1"]}]}, {"explanation": "The goal is to move the snack_food_1 from cabinet_1 to carton_1. The first step is to open the cabinet to access the snack. Then, we grasp the snack and navigate to the carton. Finally, we place the snack inside the carton.", "plan": [{"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["snack_food_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["snack_food_1", "carton_1"]}]}], "actions": [{"action": "navigate-to(cabinet_1)", "success": true, "info": "success"}, {"action": "open-container(cabinet_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["cabinet_1"], "outcome": "executed"}, {"action": "open-container", "parameters": ["cabinet_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/packing_food_for_work_simple.pddl_Wainscott_0_int_0": {"plans": [{"explanation": "The plan involves navigating to the cabinet_1, opening it, grasping the snack_food_1, navigating to the carton_1, opening it if necessary, and placing the snack_food_1 inside the carton_1.", "plan": [{"action": "navigate-to", "parameters": ["cabinet_1"]}, {"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["snack_food_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "open-container", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["snack_food_1", "carton_1"]}]}, {"explanation": "The goal is to move `snack_food_1` from `cabinet_1` to `carton_1`. The first step is to open `cabinet_1` to access the snack. Then, we grasp the `snack_food_1`, navigate to `carton_1`, and place the snack inside the carton.", "plan": [{"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["snack_food_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["snack_food_1", "carton_1"]}]}], "actions": [{"action": "navigate-to(cabinet_1)", "success": true, "info": "success"}, {"action": "open-container(cabinet_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["cabinet_1"], "outcome": "executed"}, {"action": "open-container", "parameters": ["cabinet_1"], "outcome": "executed"}], "completed": false}, "data/planning/igibson/simple/packing_food_for_work_simple.pddl_Wainscott_0_int_20": {"plans": [{"explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to first navigate to the cabinet_1, open it, grasp the snack_food_1, navigate to the carton_1, and then place the snack_food_1 inside the carton_1.", "plan": [{"action": "navigate-to", "parameters": ["cabinet_1"]}, {"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["snack_food_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["snack_food_1", "carton_1"]}]}, {"explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to open the cabinet_1 to access the snack_food_1, grasp it, navigate to the carton_1, open the carton_1 if necessary, and then place the snack_food_1 inside the carton_1.", "plan": [{"action": "open-container", "parameters": ["cabinet_1"]}, {"action": "grasp", "parameters": ["snack_food_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "open-container", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["snack_food_1", "carton_1"]}]}, {"explanation": "The goal is to place the sandwich_1 inside the carton_1. Since the sandwich_1 is inside the electric_refrigerator_1, we need to navigate to the electric_refrigerator_1, open it, grasp the sandwich_1, navigate to the carton_1, and place the sandwich_1 inside the carton_1.", "plan": [{"action": "navigate-to", "parameters": ["electric_refrigerator_1"]}, {"action": "open-container", "parameters": ["electric_refrigerator_1"]}, {"action": "grasp", "parameters": ["sandwich_1"]}, {"action": "navigate-to", "parameters": ["carton_1"]}, {"action": "place-inside", "parameters": ["sandwich_1", "carton_1"]}]}], "actions": [{"action": "navigate-to(cabinet_1)", "success": true, "info": "success"}, {"action": "open-container(cabinet_1)", "success": true, "info": "success"}, {"action": "navigate-to(electric_refrigerator_1)", "success": true, "info": "success"}], "previous_actions": [{"action": "navigate-to", "parameters": ["cabinet_1"], "outcome": "executed"}, {"action": "open-container", "parameters": ["cabinet_1"], "outcome": "executed"}, {"action": "navigate-to", "parameters": ["electric_refrigerator_1"], "outcome": "executed"}], "completed": false}, "statistics": {"total_actions": 51, "total_success": 46, "total_failed": 5, "total_tasks_completed": 3, "action_success_rate": 0.9019607843137255, "action_failure_rate": 0.09803921568627451, "task_completion_rate": 0.12}, "metadata": {"model": "OpenGVLab/InternVL3_5-30B-A3B", "seed": 1, "prompt_path": "data/prompts/planning/vila_igibson_json_cot.md", "max_steps": 10, "job_id": "14672538_3"}}
+{
+    "data/planning/igibson/simple/cleaning_out_drawers_simple.pddl_Benevolence_1_int_0": {
+        "plans": [],
+        "actions": [],
+        "previous_actions": [],
+        "completed": false
+    },
+    "data/planning/igibson/simple/cleaning_out_drawers_simple.pddl_Benevolence_1_int_20": {
+        "plans": [
+            {
+                "explanation": "To place bowl_1 on top of sink_1, I need to first access bowl_1 from cabinet_1. Since cabinet_1 is closed, I must open it. After opening, I can grasp bowl_1 and then navigate to sink_1 to place it there.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "bowl_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "sink_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "bowl_1",
+                            "sink_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "To place bowl_1 on top of sink_1, I first need to access bowl_1 from cabinet_1. Since cabinet_1 is already navigated to, the next step is to open it to make bowl_1 reachable. Then, I can grasp bowl_1, navigate to sink_1, and use place-on to position it correctly.",
+                "plan": [
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "bowl_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "sink_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "bowl_1",
+                            "sink_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(cabinet_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "open-container(cabinet_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "open-container",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/cleaning_out_drawers_simple.pddl_Benevolence_1_int_21": {
+        "plans": [
+            {
+                "explanation": "To place bowl_1 on top of sink_1, I need to first access bowl_1 from cabinet_1. Since cabinet_1 is closed, I must open it. After opening, I can grasp bowl_1 and then navigate to sink_1 to place it there.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "bowl_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "sink_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "bowl_1",
+                            "sink_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "To place bowl_1 on top of sink_1, I first need to access bowl_1 from cabinet_1. Since cabinet_1 is already navigated to, the next step is to open it to make its contents reachable. Then, I can grasp bowl_1, navigate to sink_1, and use place-on to position bowl_1 on sink_1.",
+                "plan": [
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "bowl_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "sink_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "bowl_1",
+                            "sink_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(cabinet_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "open-container(cabinet_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "open-container",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/cleaning_out_drawers_simple.pddl_Rs_int_0": {
+        "plans": [
+            {
+                "explanation": "To achieve the goal of placing the bowl_1 on top of the sink_1, we need to navigate to the cabinet_1, open it, grasp the bowl_1, navigate to the sink_1, and then place the bowl_1 on top of the sink_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "bowl_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "sink_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "bowl_1",
+                            "sink_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The goal is to place bowl_1 on top of sink_1. Since bowl_1 is inside cabinet_1, the first step is to open cabinet_1 to access its contents. After opening, grasp bowl_1, then navigate to sink_1, and finally place bowl_1 on sink_1 using the place-on action.",
+                "plan": [
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "bowl_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "sink_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "bowl_1",
+                            "sink_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has opened `cabinet_1` and needs to grasp `bowl_1` from it. After grasping `bowl_1`, the agent should navigate to `sink_1` and place `bowl_1` on top of it. This sequence ensures that `bowl_1` is correctly positioned on `sink_1`.",
+                "plan": [
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "bowl_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "sink_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "bowl_1",
+                            "sink_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has already grasped bowl_1 from cabinet_1. To place it on the sink_1, the agent needs to navigate to the sink_1 first, ensuring it is within reach. Then, the agent can use the 'place-on' action to position bowl_1 on top of sink_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "sink_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "bowl_1",
+                            "sink_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has already navigated to cabinet_1, opened it, grasped bowl_1, and moved to sink_1. The next logical step is to place bowl_1 on top of sink_1 using the 'place-on' action, as the prerequisites for this action are satisfied: the agent is holding bowl_1 and sink_1 is within reach.",
+                "plan": [
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "bowl_1",
+                            "sink_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(cabinet_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "open-container(cabinet_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "grasp(bowl_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "navigate-to(sink_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "place-on(bowl_1, sink_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "open-container",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "grasp",
+                "parameters": [
+                    "bowl_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "sink_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "place-on",
+                "parameters": [
+                    "bowl_1",
+                    "sink_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": true
+    },
+    "data/planning/igibson/simple/cleaning_out_drawers_simple.pddl_Rs_int_20": {
+        "plans": [
+            {
+                "explanation": "To achieve the goal of placing the bowl_1 on top of the sink_1, we need to first navigate to the cabinet_1, open it, grasp the bowl_1, navigate to the sink_1, and finally place the bowl_1 on top of the sink_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "bowl_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "sink_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "bowl_1",
+                            "sink_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(cabinet_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/sorting_books_simple.pddl_Ihlen_0_int_0": {
+        "plans": [
+            {
+                "explanation": "To achieve the goal of placing the hardback_1 on top of the shelf_1, I need to first locate and grasp the hardback_1, then navigate to the shelf_1, and finally place the hardback_1 on the shelf_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "hardback_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "hardback_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "shelf_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has already navigated to hardback_1. The next step is to grasp hardback_1 to pick it up. After grasping, the agent needs to navigate to shelf_1 to reach it. Finally, the agent can place hardback_1 on top of shelf_1 using the place-on action.",
+                "plan": [
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "hardback_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "shelf_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has already grasped the hardback_1. To place it on the shelf_1, the agent needs to navigate to the shelf_1 first since it's not currently in reach. Once at the shelf, the agent can use the place-on action to put the book on top of it.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "shelf_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has already grasped the hardback_1 and navigated to the shelf_1. The next logical step is to place the hardback_1 on top of the shelf_1 using the 'place-on' action, as the preconditions are satisfied.",
+                "plan": [
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The previous actions successfully navigated to the hardback_1, grasped it, moved to shelf_1, and placed the hardback_1 on top of shelf_1. Since the 'place-on' action was marked as executed, the goal is achieved. No further actions are needed.",
+                "plan": []
+            },
+            {
+                "explanation": "The goal was to place hardback_1 on top of shelf_1. The sequence of actions successfully navigated to hardback_1, grasped it, moved to shelf_1, and placed hardback_1 on shelf_1. The final invalid 'place-on' action without parameters is unnecessary and caused an error, but the task was already completed correctly in the prior step.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "hardback_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "hardback_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "shelf_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(hardback_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "grasp(hardback_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "navigate-to(shelf_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "place-on(hardback_1, shelf_1)",
+                "success": true,
+                "info": "executed but failed"
+            },
+            {
+                "action": "unknown action",
+                "success": false
+            },
+            {
+                "action": "navigate-to(hardback_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "hardback_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "grasp",
+                "parameters": [
+                    "hardback_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "shelf_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "place-on",
+                "parameters": [
+                    "hardback_1",
+                    "shelf_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "place-on",
+                "outcome": "action does not exist"
+            },
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "hardback_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/sorting_books_simple.pddl_Ihlen_0_int_20": {
+        "plans": [],
+        "actions": [],
+        "previous_actions": [],
+        "completed": false
+    },
+    "data/planning/igibson/simple/sorting_books_simple.pddl_Pomaria_1_int_0": {
+        "plans": [
+            {
+                "explanation": "The plan involves navigating to the location of hardback_1, grasping it, navigating to the location of shelf_1, and placing hardback_1 on top of shelf_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "hardback_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "hardback_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "shelf_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has already navigated to hardback_1, making it reachable. The next step is to grasp hardback_1 to pick it up. Afterward, the agent needs to navigate to shelf_1, which may require moving to a different location in the environment. Once shelf_1 is reachable, the agent can place hardback_1 on top of it using the place-on action.",
+                "plan": [
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "hardback_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "shelf_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has already grasped hardback_1. To place it on shelf_1, the agent must first navigate to shelf_1, which is likely in the background. Once there, the agent can use the 'place-on' action to position hardback_1 on top of shelf_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "shelf_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has successfully grasped the hardback_1 and navigated to the shelf_1. The next logical step is to place the hardback_1 on top of the shelf_1 using the 'place-on' action, as both the held object and the target support are reachable.",
+                "plan": [
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(hardback_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "grasp(hardback_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "navigate-to(shelf_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "place-on(hardback_1, shelf_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "hardback_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "grasp",
+                "parameters": [
+                    "hardback_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "shelf_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "place-on",
+                "parameters": [
+                    "hardback_1",
+                    "shelf_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": true
+    },
+    "data/planning/igibson/simple/sorting_books_simple.pddl_Pomaria_1_int_20": {
+        "plans": [
+            {
+                "explanation": "The plan involves navigating to the location of hardback_1, grasping it, navigating to shelf_1, and placing hardback_1 on top of shelf_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "table_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "hardback_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "shelf_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent needs to move the `hardback_1` from `table_1` to `shelf_1`. This involves grasping `hardback_1`, navigating to `shelf_1`, and placing `hardback_1` on top of `shelf_1`.",
+                "plan": [
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "hardback_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "shelf_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has already grasped the hardback_1 and needs to place it on the shelf_1. The next step is to navigate to shelf_1 to make it reachable, and then place the hardback_1 on top of it.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "shelf_1"
+                        ]
+                    },
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has already navigated to the table, grasped the hardback_1, and moved to the shelf_1. The next logical step is to place the hardback_1 on top of the shelf_1 using the 'place-on' action, as the agent is holding the book and the shelf is within reach.",
+                "plan": [
+                    {
+                        "action": "place-on",
+                        "parameters": [
+                            "hardback_1",
+                            "shelf_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(table_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "grasp(hardback_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "navigate-to(shelf_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "place-on(hardback_1, shelf_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "table_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "grasp",
+                "parameters": [
+                    "hardback_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "shelf_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "place-on",
+                "parameters": [
+                    "hardback_1",
+                    "shelf_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": true
+    },
+    "data/planning/igibson/simple/sorting_books_simple.pddl_Rs_int_0": {
+        "plans": [],
+        "actions": [],
+        "previous_actions": [],
+        "completed": false
+    },
+    "data/planning/igibson/simple/locking_every_door_simple.pddl_Merom_1_int_0": {
+        "plans": [
+            {
+                "explanation": "The goal is to close both door_1 and door_2. Since both doors are not visible in the current view, I need to navigate to each door to make them reachable and then close them.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The goal is to close both door_1 and door_2. Since door_1 is already open and reachable, the first action is to close it. After that, I need to navigate to door_2 to close it as well.",
+                "plan": [
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(door_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "close-container(door_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "door_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "close-container",
+                "parameters": [
+                    "door_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/locking_every_door_simple.pddl_Merom_1_int_20": {
+        "plans": [
+            {
+                "explanation": "The goal is to close both door_1 and door_2. Initially, the doors are not reachable, so the first step is to navigate to door_1, close it, then navigate to door_2 and close it.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The goal is to close both door_1 and door_2. Since I'm already at door_1, the first step is to close it using the 'close-container' action. This will make door_1 no longer reachable, and then I can navigate to door_2 to close it.",
+                "plan": [
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has already closed door_1. Now, the goal is to close door_2. Since door_2 is not currently in the agent's vicinity, the next step is to navigate to door_2. Once there, the agent can use the 'close-container' action to close it, assuming it is open. This ensures both doors are closed as required.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent has already closed door_1 and navigated to door_2. The next step is to close door_2, which is an open container. The close-container action is applicable here as the door is within reach and open.",
+                "plan": [
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The goal requires closing both door_1 and door_2. The agent successfully navigated to each door and closed them using the 'close-container' action. Both actions were executed without failure, so no further steps are needed.",
+                "plan": []
+            },
+            {
+                "explanation": "The goal was to close both door_1 and door_2. The actions taken to navigate to each door and close them were successful. The last action failed because it attempted to close a container without specifying which one, which is not relevant to the goal. Since the doors are already closed, no further actions are needed.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(door_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "close-container(door_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "navigate-to(door_2)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "close-container(door_2)",
+                "success": true,
+                "info": "executed but failed"
+            },
+            {
+                "action": "unknown action",
+                "success": false
+            },
+            {
+                "action": "navigate-to(door_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "door_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "close-container",
+                "parameters": [
+                    "door_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "door_2"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "close-container",
+                "parameters": [
+                    "door_2"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "close-container",
+                "outcome": "action does not exist"
+            },
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "door_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/locking_every_door_simple.pddl_Pomaria_0_int_0": {
+        "plans": [
+            {
+                "explanation": "The goal is to close both door_1 and door_2. Both doors are visible and reachable, so the agent can directly close them without needing to navigate further.",
+                "plan": [
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The goal is to close both `door_1` and `door_2`. The previous attempt to close `door_1` failed due to incorrect parameters. We need to correct this and then navigate to `door_2` to close it as well.",
+                "plan": [
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "close-container(door_1)",
+                "success": false,
+                "info": "not legal"
+            },
+            {
+                "action": "close-container(door_1)",
+                "success": false,
+                "info": "not legal"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "close-container",
+                "parameters": [
+                    "door_1"
+                ],
+                "outcome": "parameters incorrectly specified"
+            },
+            {
+                "action": "close-container",
+                "parameters": [
+                    "door_1"
+                ],
+                "outcome": "parameters incorrectly specified"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/locking_every_door_simple.pddl_Pomaria_0_int_20": {
+        "plans": [
+            {
+                "explanation": "The goal is to close door_1 and door_2. Door_1 appears to be already closed. Door_2 is not visible, so we need to navigate to the stairs to access the other level where door_2 might be located. Once there, we will navigate to door_2 and close it.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "stairs"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The goal is to close both door_1 and door_2. Initially, door_1 is visible and closed, so we can navigate to it and close it. Door_2 is not visible, so we need to navigate to it after closing door_1. The plan involves navigating to each door and closing it.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent is currently at door_1, which is open. The goal is to close both door_1 and door_2. The first step is to close door_1 since the agent is already there. After closing door_1, the agent needs to navigate to door_2 and close it as well.",
+                "plan": [
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(stairs)",
+                "success": false,
+                "info": "Invalid action: Invalid format for name 'stairs'. Expected format like 'prefix_suffix'."
+            },
+            {
+                "action": "navigate-to(door_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "close-container(door_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "stairs"
+                ],
+                "outcome": "parameters incorrectly specified"
+            },
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "door_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "close-container",
+                "parameters": [
+                    "door_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/locking_every_door_simple.pddl_Wainscott_1_int_0": {
+        "plans": [
+            {
+                "explanation": "The goal is to close both door_1 and door_2. Since both doors are visible and not inside any containers, the agent can directly navigate to each door and close them. The plan involves navigating to door_1, closing it, then navigating to door_2, and closing it.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The goal is to close both door_1 and door_2. I have already navigated to door_1, so the next step is to close it. After that, I will navigate to door_2 and close it.",
+                "plan": [
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    },
+                    {
+                        "action": "close-container",
+                        "parameters": [
+                            "door_2"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(door_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "close-container(door_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "door_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "close-container",
+                "parameters": [
+                    "door_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/locking_every_window_simple.pddl_Merom_1_int_0": {
+        "plans": [],
+        "actions": [],
+        "previous_actions": [],
+        "completed": false
+    },
+    "data/planning/igibson/simple/locking_every_window_simple.pddl_Merom_1_int_20": {
+        "plans": [],
+        "actions": [],
+        "previous_actions": [],
+        "completed": false
+    },
+    "data/planning/igibson/simple/locking_every_window_simple.pddl_Rs_int_0": {
+        "plans": [],
+        "actions": [],
+        "previous_actions": [],
+        "completed": false
+    },
+    "data/planning/igibson/simple/locking_every_window_simple.pddl_Rs_int_20": {
+        "plans": [],
+        "actions": [],
+        "previous_actions": [],
+        "completed": false
+    },
+    "data/planning/igibson/simple/locking_every_window_simple.pddl_Wainscott_0_int_0": {
+        "plans": [],
+        "actions": [],
+        "previous_actions": [],
+        "completed": false
+    },
+    "data/planning/igibson/simple/packing_food_for_work_simple.pddl_Beechwood_0_int_0": {
+        "plans": [
+            {
+                "explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to first navigate to the cabinet_1, open it, grasp the snack_food_1, navigate to the carton_1, open the carton_1, and finally place the snack_food_1 inside the carton_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "snack_food_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "snack_food_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The goal is to move the `snack_food_1` from `cabinet_1` to `carton_1`. The first step is to open `cabinet_1` to access the `snack_food_1`. Then, we grasp the `snack_food_1` and navigate to `carton_1`. Finally, we place the `snack_food_1` inside `carton_1`.",
+                "plan": [
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "snack_food_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "snack_food_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The agent needs to navigate to the electric_refrigerator_1, open it, grasp the snack_food_1, navigate to the carton_1, and place the snack_food_1 inside the carton_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "electric_refrigerator_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "electric_refrigerator_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "snack_food_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "snack_food_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(cabinet_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "open-container(cabinet_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "navigate-to(electric_refrigerator_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "open-container",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "electric_refrigerator_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/packing_food_for_work_simple.pddl_Beechwood_0_int_20": {
+        "plans": [
+            {
+                "explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to first navigate to the cabinet_1, open it, grasp the snack_food_1, navigate to the carton_1, open the carton_1, and finally place the snack_food_1 inside the carton_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "snack_food_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "snack_food_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to first open the cabinet_1 to access the snack_food_1. Then, we grasp the snack_food_1 and navigate to the carton_1. Finally, we place the snack_food_1 inside the carton_1.",
+                "plan": [
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "snack_food_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "snack_food_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(cabinet_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "open-container(cabinet_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "open-container",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/packing_food_for_work_simple.pddl_Beechwood_0_int_21": {
+        "plans": [
+            {
+                "explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to first navigate to the cabinet_1, open it, grasp the snack_food_1, navigate to the carton_1, open the carton_1, and finally place the snack_food_1 inside the carton_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "snack_food_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "snack_food_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The goal is to move the snack_food_1 from cabinet_1 to carton_1. The first step is to open the cabinet to access the snack. Then, we grasp the snack and navigate to the carton. Finally, we place the snack inside the carton.",
+                "plan": [
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "snack_food_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "snack_food_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(cabinet_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "open-container(cabinet_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "open-container",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/packing_food_for_work_simple.pddl_Wainscott_0_int_0": {
+        "plans": [
+            {
+                "explanation": "The plan involves navigating to the cabinet_1, opening it, grasping the snack_food_1, navigating to the carton_1, opening it if necessary, and placing the snack_food_1 inside the carton_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "snack_food_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "snack_food_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The goal is to move `snack_food_1` from `cabinet_1` to `carton_1`. The first step is to open `cabinet_1` to access the snack. Then, we grasp the `snack_food_1`, navigate to `carton_1`, and place the snack inside the carton.",
+                "plan": [
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "snack_food_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "snack_food_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(cabinet_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "open-container(cabinet_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "open-container",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "data/planning/igibson/simple/packing_food_for_work_simple.pddl_Wainscott_0_int_20": {
+        "plans": [
+            {
+                "explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to first navigate to the cabinet_1, open it, grasp the snack_food_1, navigate to the carton_1, and then place the snack_food_1 inside the carton_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "snack_food_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "snack_food_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "To achieve the goal of placing the snack_food_1 inside the carton_1, we need to open the cabinet_1 to access the snack_food_1, grasp it, navigate to the carton_1, open the carton_1 if necessary, and then place the snack_food_1 inside the carton_1.",
+                "plan": [
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "cabinet_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "snack_food_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "snack_food_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            },
+            {
+                "explanation": "The goal is to place the sandwich_1 inside the carton_1. Since the sandwich_1 is inside the electric_refrigerator_1, we need to navigate to the electric_refrigerator_1, open it, grasp the sandwich_1, navigate to the carton_1, and place the sandwich_1 inside the carton_1.",
+                "plan": [
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "electric_refrigerator_1"
+                        ]
+                    },
+                    {
+                        "action": "open-container",
+                        "parameters": [
+                            "electric_refrigerator_1"
+                        ]
+                    },
+                    {
+                        "action": "grasp",
+                        "parameters": [
+                            "sandwich_1"
+                        ]
+                    },
+                    {
+                        "action": "navigate-to",
+                        "parameters": [
+                            "carton_1"
+                        ]
+                    },
+                    {
+                        "action": "place-inside",
+                        "parameters": [
+                            "sandwich_1",
+                            "carton_1"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "action": "navigate-to(cabinet_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "open-container(cabinet_1)",
+                "success": true,
+                "info": "success"
+            },
+            {
+                "action": "navigate-to(electric_refrigerator_1)",
+                "success": true,
+                "info": "success"
+            }
+        ],
+        "previous_actions": [
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "open-container",
+                "parameters": [
+                    "cabinet_1"
+                ],
+                "outcome": "executed"
+            },
+            {
+                "action": "navigate-to",
+                "parameters": [
+                    "electric_refrigerator_1"
+                ],
+                "outcome": "executed"
+            }
+        ],
+        "completed": false
+    },
+    "statistics": {
+        "total_actions": 51,
+        "total_success": 46,
+        "total_failed": 5,
+        "total_tasks_completed": 3,
+        "action_success_rate": 0.9019607843137255,
+        "action_failure_rate": 0.09803921568627451,
+        "task_completion_rate": 0.12
+    },
+    "metadata": {
+        "model": "OpenGVLab/InternVL3_5-30B-A3B",
+        "seed": 1,
+        "prompt_path": "data/prompts/planning/vila_igibson_json_cot.md",
+        "max_steps": 10,
+        "job_id": "14672538_3"
+    }
+}

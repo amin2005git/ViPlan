@@ -4,12 +4,14 @@
 #SBATCH --mem=20G
 #SBATCH --gres=gpu:1
 #SBATCH --output=./slurm/%A_%a.out
-#SBATCH --array=0-26
+#SBATCH --array=0-35
 
 # Define the list of models and problem splits.
 models=(
   "OpenGVLab/InternVL3-8B"
+  "OpenGVLab/InternVL3_5-8B"
   "Qwen/Qwen2.5-VL-7B-Instruct"
+  "Qwen/Qwen3-VL-8B-Instruct"
   "google/gemma-3-12b-it"
   "mistralai/Mistral-Small-3.1-24B-Instruct-2503"
   "allenai/Molmo-7B-D-0924"
@@ -17,6 +19,7 @@ models=(
   "llava-hf/llava-onevision-qwen2-7b-ov-hf"
   "deepseek-ai/deepseek-vl2"
   "CohereLabs/aya-vision-8b"
+  "nvidia/Cosmos-Reason2-8B"
 )
 
 splits=("simple" "medium" "hard")
@@ -34,6 +37,7 @@ model_short="${MODEL##*/}"
 # Default values for flags
 GPU_RENDERING=true           # default value: can be true or false
 ENUMERATE_INITIAL_STATE=true # default value: can be true or false
+INCLUDE_PROMPT_HISTORY=false
 SEED=1                       # default seed value
 ENUM_BATCH_SIZE=4            # default batch size
 FAIL_PROBABILITY=0.0         # default fail probability
@@ -61,6 +65,10 @@ while [[ $# -gt 0 ]]; do
     --enum_batch_size)
       ENUM_BATCH_SIZE="$2"
       shift 2
+      ;;
+    --include_prompt_history)
+      INCLUDE_PROMPT_HISTORY="true"
+      shift
       ;;
     --fail_probability)
       FAIL_PROBABILITY="$2"
@@ -108,15 +116,21 @@ if [[ "$ENUMERATE_INITIAL_STATE" == "true" || "$ENUMERATE_INITIAL_STATE" == true
     enumerate_flag="--enumerate_initial_state"
 fi
 
-python3 -m viplan.experiments.benchmark_blocksworld_plan \
+history_flag=""
+if [[ "$INCLUDE_PROMPT_HISTORY" == "true" || "$INCLUDE_PROMPT_HISTORY" == true ]]; then
+  history_flag="--include_prompt_history"
+fi
+
+python3 -m viplan.experiments.benchmark_vlm_as_grounder \
   --model_name "$MODEL" \
-  --log_level "debug" \
+  --log_level "info" \
   --root_path "$ROOT_PATH" \
   --prompt_path "$PROMPT_PATH" \
+  --domain_name "viplan-bw" \
   --domain_file "$DOMAIN_FILE" \
   --problems_dir "$PROBLEMS_DIR" \
   --output_dir "$OUTPUT_DIR" \
   --seed "$SEED" \
   --enum_batch_size "$ENUM_BATCH_SIZE" \
   --fail_probability "$FAIL_PROBABILITY" \
-  $gpu_flag $enumerate_flag
+  $gpu_flag $enumerate_flag $history_flag

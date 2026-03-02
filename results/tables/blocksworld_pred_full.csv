@@ -35,6 +35,9 @@ Qwen2.5-VL 7B,hard,0.0,0.94,no,0.0,0.0
 Qwen3-VL 30B A3B,simple,0.48,0.98,no,0.1,0.0
 Qwen3-VL 30B A3B,medium,0.0,0.97,no,0.0,0.0
 Qwen3-VL 30B A3B,hard,0.0,0.96,no,0.0,0.0
+Qwen3-VL 32B,simple,0.72,0.98,no,0.09,0.0
+Qwen3-VL 32B,medium,0.36,0.98,no,0.1,0.0
+Qwen3-VL 32B,hard,0.0,0.96,no,0.0,0.0
 Qwen3-VL 8B,simple,0.8,0.99,no,0.08,0.0
 Qwen3-VL 8B,medium,0.0,0.98,no,0.0,0.0
 Qwen3-VL 8B,hard,0.04,0.98,no,0.04,0.0
@@ -59,6 +62,9 @@ GPT-4.1,hard,0.48,0.98,no,0.1,0.0
 GPT-4.1 Nano,simple,0.12,0.89,no,0.06,0.01
 GPT-4.1 Nano,medium,0.0,0.85,no,0.0,0.0
 GPT-4.1 Nano,hard,0.0,0.84,no,0.0,0.0
+GPT-5.2,simple,0.96,0.99,no,0.04,0.0
+GPT-5.2,medium,0.76,0.99,no,0.09,0.0
+GPT-5.2,hard,0.36,0.98,no,0.1,0.0
 LLaVA-Onevision 72B,simple,0.0,0.95,no,0.0,0.01
 LLaVA-Onevision 72B,medium,0.0,0.94,no,0.0,0.0
 LLaVA-Onevision 72B,hard,0.0,0.93,no,0.0,0.01
@@ -101,6 +107,9 @@ Qwen2.5-VL 7B,hard,0.0,0.89,yes,0.0,0.0
 Qwen3-VL 30B A3B,simple,0.6,0.97,yes,0.1,0.0
 Qwen3-VL 30B A3B,medium,0.2,0.97,yes,0.08,0.0
 Qwen3-VL 30B A3B,hard,0.12,0.97,yes,0.06,0.0
+Qwen3-VL 32B,simple,0.56,0.97,yes,0.1,0.0
+Qwen3-VL 32B,medium,0.44,0.98,yes,0.1,0.0
+Qwen3-VL 32B,hard,0.04,0.97,yes,0.04,0.0
 Qwen3-VL 8B,simple,0.8,0.99,yes,0.08,0.0
 Qwen3-VL 8B,medium,0.4,0.98,yes,0.1,0.0
 Qwen3-VL 8B,hard,0.4,0.96,yes,0.1,0.0

@@ -3,6 +3,7 @@
 set -euo pipefail
 
 models=(
+  "gpt-5.2"
   "gpt-4.1"
   "gpt-4.1-nano"
 )
@@ -14,6 +15,7 @@ SEED=1
 ENUM_BATCH_SIZE=4
 PROMPT_PATH="data/prompts/benchmark/igibson/prompt.md"
 EXPERIMENT_NAME=""
+INCLUDE_PROMPT_HISTORY=false
 
 # Parse optional arguments
 while [[ $# -gt 0 ]]; do
@@ -29,6 +31,10 @@ while [[ $# -gt 0 ]]; do
     --enum_batch_size)
       ENUM_BATCH_SIZE="$2"
       shift 2
+      ;;
+    --include_prompt_history)
+      INCLUDE_PROMPT_HISTORY="true"
+      shift
       ;;
     --use_cot_prompt)
       PROMPT_PATH="data/prompts/benchmark/igibson/prompt_cot.md"
@@ -74,16 +80,23 @@ for MODEL in "${models[@]}"; do
       OUTPUT_DIR="results/planning/igibson/predicates/${PROBLEM_SPLIT}/${model_short}"
     fi
 
-    python3 -m viplan.experiments.benchmark_igibson_plan \
+    history_flag=""
+    if [[ "$INCLUDE_PROMPT_HISTORY" == "true" || "$INCLUDE_PROMPT_HISTORY" == true ]]; then
+      history_flag="--include_prompt_history"
+    fi
+
+    python3 -m viplan.experiments.benchmark_vlm_as_grounder \
       --base_url "${BASE_URL}" \
       --model_name "${MODEL}" \
+      --domain_name "viplan-hh" \
       --domain_file "$DOMAIN_FILE" \
       --problems_dir "$PROBLEMS_DIR" \
       --prompt_path "$PROMPT_PATH" \
       --output_dir "$OUTPUT_DIR" \
       --max_steps "$MAX_STEPS" \
       --seed "$SEED" \
-      --enum_batch_size "$ENUM_BATCH_SIZE"
+      --enum_batch_size "$ENUM_BATCH_SIZE" \
+      $history_flag
 
     job_id=$((job_id + 1))
   done

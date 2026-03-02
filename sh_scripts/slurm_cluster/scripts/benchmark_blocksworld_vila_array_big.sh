@@ -4,12 +4,16 @@
 #SBATCH --mem=20G
 #SBATCH --gres=gpu:2
 #SBATCH --output=./slurm/%A_%a.out
-#SBATCH --array=0-14
+#SBATCH --array=0-26
 
 # Define the list of models and problem splits.
 models=(
   "OpenGVLab/InternVL3-78B"
+  "OpenGVLab/InternVL3_5-30B-A3B"
+  "OpenGVLab/InternVL3_5-38B"
   "Qwen/Qwen2.5-VL-72B-Instruct"
+  "Qwen/Qwen3-VL-30B-A3B-Instruct"
+  "Qwen/Qwen3-VL-32B-Instruct"
   "google/gemma-3-27b-it"
   "llava-hf/llava-onevision-qwen2-72b-ov-hf"
   "CohereLabs/aya-vision-32b"
@@ -39,6 +43,8 @@ GPU_RENDERING=true
 SEED=1
 FAIL_PROBABILITY=0.0
 PROMPT_PATH="data/prompts/planning/vila_blocksworld_json.md"
+USE_ACT=false
+USE_COT=false
 
 # Parse additional arguments.
 while [[ $# -gt 0 ]]; do
@@ -59,8 +65,12 @@ while [[ $# -gt 0 ]]; do
       FAIL_PROBABILITY="$2"
       shift 2
       ;;
+    --act_prompt)
+      USE_ACT=true
+      shift
+      ;;
     --use_cot_prompt)
-      PROMPT_PATH="data/prompts/planning/vila_blocksworld_json_cot.md"
+      USE_COT=true
       shift
       ;;
     *)
@@ -69,6 +79,16 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+if [ "$USE_ACT" = true ] && [ "$USE_COT" = true ]; then
+  PROMPT_PATH="data/prompts/planning/react_blocksworld_json.md"
+elif [ "$USE_ACT" = true ]; then
+  PROMPT_PATH="data/prompts/planning/act_blocksworld_json.md"
+elif [ "$USE_COT" = true ]; then
+  PROMPT_PATH="data/prompts/planning/vila_blocksworld_json_cot.md"
+else
+  PROMPT_PATH="data/prompts/planning/vila_blocksworld_json.md"
+fi
 
 echo "Running $MODEL on problem split $PROBLEM_SPLIT with seed $SEED and max steps $MAX_STEPS"
 
@@ -96,17 +116,18 @@ if [ "$GPU_RENDERING" = "true" ] || [ "$GPU_RENDERING" = true ]; then
   gpu_flag="--gpu_rendering"
 fi
 
-python3 -m viplan.experiments.benchmark_blocksworld_vila \
+python3 -m viplan.experiments.benchmark_vlm_as_planner \
   --model_name "$MODEL" \
-  --log_level "debug" \
+  --log_level "info" \
   --root_path "$ROOT_PATH" \
   --prompt_path "$PROMPT_PATH" \
+  --domain_name "viplan-bw" \
   --domain_file "$DOMAIN_FILE" \
   --problems_dir "$PROBLEMS_DIR" \
   --output_dir "$OUTPUT_DIR" \
   --seed "$SEED" \
   --max_steps $MAX_STEPS \
-  --max_new_tokens 3000 \
+  --max_new_tokens 1024 \
   --fail_probability "$FAIL_PROBABILITY" \
   --tensor_parallel_size 2 \
   $gpu_flag

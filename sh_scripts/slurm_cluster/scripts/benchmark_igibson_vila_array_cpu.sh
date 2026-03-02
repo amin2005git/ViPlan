@@ -10,6 +10,7 @@ mkdir -p ./slurm
 
 # Define the list of models and problem splits.
 models=(
+  "gpt-5.2"
   "gpt-4.1"
   "gpt-4.1-nano"
 )
@@ -32,6 +33,8 @@ model_short="${MODEL##*/}"
 # Default flag values.
 SEED=1
 PROMPT_PATH="data/prompts/planning/vila_igibson_json.md"
+USE_ACT=false
+USE_COT=false
 
 # Parse additional arguments.
 while [[ $# -gt 0 ]]; do
@@ -44,8 +47,12 @@ while [[ $# -gt 0 ]]; do
       EXPERIMENT_NAME="$2"
       shift 2
       ;;
+    --act_prompt)
+      USE_ACT=true
+      shift
+      ;;
     --use_cot_prompt)
-      PROMPT_PATH="data/prompts/planning/vila_igibson_json_cot.md"
+      USE_COT=true
       shift
       ;;
     *)
@@ -54,6 +61,16 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+if [ "$USE_ACT" = true ] && [ "$USE_COT" = true ]; then
+  PROMPT_PATH="data/prompts/planning/react_igibson_json.md"
+elif [ "$USE_ACT" = true ]; then
+  PROMPT_PATH="data/prompts/planning/act_igibson_json.md"
+elif [ "$USE_COT" = true ]; then
+  PROMPT_PATH="data/prompts/planning/vila_igibson_json_cot.md"
+else
+  PROMPT_PATH="data/prompts/planning/vila_igibson_json.md"
+fi
 
 # Handle server logic
 NODE=$(hostname -s)
@@ -88,12 +105,14 @@ else
   OUTPUT_DIR="results/planning/igibson/${PROBLEM_SPLIT}/vila/${model_short}"
 fi
 
-python3 -m viplan.experiments.benchmark_igibson_vila \
+python3 -m viplan.experiments.benchmark_vlm_as_planner \
     --base_url "${BASE_URL}" \
     --model_name "${MODEL}" \
+  --domain_name "viplan-hh" \
     --domain_file  "$DOMAIN_FILE"\
     --problems_dir "$PROBLEMS_DIR" \
     --prompt_path "$PROMPT_PATH" \
     --output_dir "$OUTPUT_DIR" \
     --max_steps $MAX_STEPS \
+    --max_new_tokens 1024 \
     --seed $SEED

@@ -20,7 +20,7 @@ You will also receive feedback of the previously taken actions, with a note show
 </system>
 <user>
 ## Description of the environment
-The environment is about colored blocks and how they relate to each other. In the environment, the blocks will be arranged in columns, spanning from left to right. Keep in mind that some of these columns can be empty with no blocks currently placed in them. Within a column one or multiple blocks of different colors can be stacked on top of each other. Your task is to correctly evaluate the question based on the image provided.
+The environment is about colored blocks and how they relate to each other. In the environment, the blocks will be arranged in columns, spanning from left to right. Keep in mind that some of these columns can be empty with no blocks currently placed in them. Within a column one or multiple blocks of different colors can be stacked on top of each other.
 
 ## Available actions
 You have only one action available, called `moveblock(block, column)`. This action allows you to move a block from its current column to the specified column. In order to perform this action, the block you want to move must be the topmost block of its column and must not already be in the target column. If the action is valid, the block will be moved to the specified column and will be placed on top of any blocks that are already in that column, if any.

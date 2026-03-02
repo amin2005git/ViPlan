@@ -1,0 +1,31 @@
+model,split,success rate,cot,success rate error
+InternVL3 78B,simple,0.08,Action,0.05
+InternVL3 78B,medium,0.0,Action,0.0
+InternVL3 78B,hard,0.0,Action,0.0
+InternVL3.5 38B,simple,0.48,Action,0.1
+InternVL3.5 38B,medium,0.04,Action,0.04
+InternVL3.5 38B,hard,0.0,Action,0.0
+Qwen2.5-VL 72B,simple,0.04,Action,0.04
+Qwen2.5-VL 72B,medium,0.0,Action,0.0
+Qwen2.5-VL 72B,hard,0.0,Action,0.0
+Qwen3-VL 32B,simple,0.04,Action,0.04
+Qwen3-VL 32B,medium,0.0,Action,0.0
+Qwen3-VL 32B,hard,0.0,Action,0.0
+Gemma-3 27B,simple,0.28,Action,0.09
+Gemma-3 27B,medium,0.08,Action,0.05
+Gemma-3 27B,hard,0.0,Action,0.0
+InternVL3 78B,simple,0.56,Action + CoT,0.1
+InternVL3 78B,medium,0.08,Action + CoT,0.05
+InternVL3 78B,hard,0.04,Action + CoT,0.04
+InternVL3.5 38B,simple,0.12,Action + CoT,0.06
+InternVL3.5 38B,medium,0.04,Action + CoT,0.04
+InternVL3.5 38B,hard,0.0,Action + CoT,0.0
+Qwen2.5-VL 72B,simple,0.12,Action + CoT,0.06
+Qwen2.5-VL 72B,medium,0.0,Action + CoT,0.0
+Qwen2.5-VL 72B,hard,0.04,Action + CoT,0.04
+Qwen3-VL 32B,simple,0.4,Action + CoT,0.1
+Qwen3-VL 32B,medium,0.32,Action + CoT,0.09
+Qwen3-VL 32B,hard,0.0,Action + CoT,0.0
+Gemma-3 27B,simple,0.28,Action + CoT,0.09
+Gemma-3 27B,medium,0.08,Action + CoT,0.05
+Gemma-3 27B,hard,0.04,Action + CoT,0.04

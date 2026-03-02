@@ -3,6 +3,7 @@
 set -euo pipefail
 
 models=(
+  "gpt-5.2"
   "gpt-4.1"
   "gpt-4.1-nano"
 )
@@ -16,6 +17,8 @@ SEED=1
 FAIL_PROBABILITY=0.0
 PROMPT_PATH="data/prompts/planning/vila_blocksworld_json.md"
 EXPERIMENT_NAME=""
+USE_ACT=false
+USE_COT=false
 
 # Parse additional command-line arguments
 while [[ $# -gt 0 ]]; do
@@ -36,8 +39,12 @@ while [[ $# -gt 0 ]]; do
       FAIL_PROBABILITY="$2"
       shift 2
       ;;
+    --act_prompt)
+      USE_ACT=true
+      shift
+      ;;
     --use_cot_prompt)
-      PROMPT_PATH="data/prompts/planning/vila_blocksworld_json_cot.md"
+      USE_COT=true
       shift
       ;;
     *)
@@ -46,6 +53,16 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+if [ "$USE_ACT" = true ] && [ "$USE_COT" = true ]; then
+  PROMPT_PATH="data/prompts/planning/react_blocksworld_json.md"
+elif [ "$USE_ACT" = true ]; then
+  PROMPT_PATH="data/prompts/planning/act_blocksworld_json.md"
+elif [ "$USE_COT" = true ]; then
+  PROMPT_PATH="data/prompts/planning/vila_blocksworld_json_cot.md"
+else
+  PROMPT_PATH="data/prompts/planning/vila_blocksworld_json.md"
+fi
 
 mkdir -p ./slurm
 
@@ -77,17 +94,18 @@ for MODEL in "${models[@]}"; do
       gpu_flag="--gpu_rendering"
     fi
 
-    python3 -m viplan.experiments.benchmark_blocksworld_vila \
+    python3 -m viplan.experiments.benchmark_vlm_as_planner \
       --model_name "$MODEL" \
-      --log_level "debug" \
+      --log_level "info" \
       --root_path "$ROOT_PATH" \
       --prompt_path "$PROMPT_PATH" \
+      --domain_name "viplan-bw" \
       --domain_file "$DOMAIN_FILE" \
       --problems_dir "$PROBLEMS_DIR" \
       --output_dir "$OUTPUT_DIR" \
       --seed "$SEED" \
       --max_steps "$MAX_STEPS" \
-      --max_new_tokens 3000 \
+      --max_new_tokens 1024 \
       --fail_probability "$FAIL_PROBABILITY" \
       $gpu_flag
 

@@ -64,13 +64,13 @@ class VllmVLM():
                 tokenizer_mode="mistral",
                 config_format="mistral",
                 load_format="mistral",
-                allowed_local_media_path=allowed_local_media_path,  # Fix: provide actual path instead of boolean
+                allowed_local_media_path=allowed_local_media_path,
                 dtype=self.dtype,
                 # enforce_eager=True,
                 disable_mm_preprocessor_cache=True,
                 download_dir=cache_dir,
                 tensor_parallel_size=tensor_parallel_size,
-                max_model_len=65536,  # ↓ Reduce from 128000 to something manageable - NOT SURE THIS IS ALLOWED 
+                max_model_len=65536, 
             )
             self.dictionary_size=131072 # number of tokens in dictionary, needs to be manually set based on the model
             self.tokenizer = self.model.get_tokenizer()
@@ -78,7 +78,7 @@ class VllmVLM():
         elif "deepseek" in self.model_name.lower():
             self.model = LLM(
                 model=model_name, 
-                allowed_local_media_path=allowed_local_media_path,  # Fix: provide actual path instead of boolean
+                allowed_local_media_path=allowed_local_media_path,
                 dtype=self.dtype,
                 # enforce_eager=True,
                 # disable_mm_preprocessor_cache=True,
@@ -91,7 +91,7 @@ class VllmVLM():
         elif "aya-vision" in self.model_name.lower():
             self.model = LLM(
                 model=model_name, 
-                allowed_local_media_path=allowed_local_media_path,  # Fix: provide actual path instead of boolean
+                allowed_local_media_path=allowed_local_media_path,
                 dtype=self.dtype,
                 mm_processor_kwargs={"crop_to_patches": True},
                 download_dir=cache_dir,
@@ -102,7 +102,7 @@ class VllmVLM():
         elif "molmo" in self.model_name.lower():
             self.model = LLM(
                 model=model_name,
-                allowed_local_media_path=allowed_local_media_path,  # Fix: provide actual path instead of boolean
+                allowed_local_media_path=allowed_local_media_path,
                 dtype=self.dtype,
                 download_dir=cache_dir,
                 trust_remote_code=True,
@@ -112,14 +112,30 @@ class VllmVLM():
         elif "internvl" in self.model_name.lower():
             self.model = LLM(
                 model=model_name, 
+                allowed_local_media_path=allowed_local_media_path,
                 trust_remote_code=True,
                 max_model_len=4096,
                 dtype=self.dtype,
                 mm_processor_kwargs={"max_dynamic_patch": 4},
                 download_dir=cache_dir,
                 tensor_parallel_size=tensor_parallel_size,
-                enforce_eager=True # experimental, to make InternVL fit in 2 H200 with 141GB each
+                enforce_eager=True, # experimental, to make InternVL fit in 2 H200 with 141GB each
             )
+            self.chat_template_path = f"{PROJECT_ROOT}/data/chat_templates/template_internvl.jinja"
+            self.chat_template = open(self.chat_template_path, "r").read()
+            self.tokenizer = self.model.get_tokenizer()
+            self.tokenizer = self.model.get_tokenizer()
+            print("self.tokenizer.chat_template:", self.tokenizer.chat_template)
+        elif "qwen" in self.model_name.lower():
+            self.model = LLM(
+                model=model_name,
+                allowed_local_media_path=allowed_local_media_path,
+                dtype=self.dtype,
+                download_dir=cache_dir,
+                tensor_parallel_size=tensor_parallel_size,
+                async_scheduling=True,
+                max_model_len=8192,)
+        
             self.chat_template_path = None
             self.chat_template = None
             self.tokenizer = self.model.get_tokenizer()
@@ -224,7 +240,6 @@ class VllmVLM():
             max_tokens=max_new_tokens, 
             min_tokens=self.min_new_tokens, 
             n=self.num_return_sequences,
-            best_of=self.num_return_sequences,
             temperature=self.temperature,
             top_p=self.top_p,
             top_k=self.top_k,

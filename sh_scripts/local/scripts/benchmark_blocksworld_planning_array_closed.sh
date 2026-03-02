@@ -3,6 +3,7 @@
 set -euo pipefail
 
 models=(
+  "gpt-5.2"
   "gpt-4.1"
   "gpt-4.1-nano"
 )
@@ -12,6 +13,7 @@ splits=("simple" "medium" "hard")
 # Default values for flags
 GPU_RENDERING=true
 ENUMERATE_INITIAL_STATE=true
+INCLUDE_PROMPT_HISTORY=false
 SEED=1
 ENUM_BATCH_SIZE=4
 FAIL_PROBABILITY=0.0
@@ -40,6 +42,10 @@ while [[ $# -gt 0 ]]; do
     --enum_batch_size)
       ENUM_BATCH_SIZE="$2"
       shift 2
+      ;;
+    --include_prompt_history)
+      INCLUDE_PROMPT_HISTORY="true"
+      shift
       ;;
     --fail_probability)
       FAIL_PROBABILITY="$2"
@@ -87,18 +93,24 @@ for MODEL in "${models[@]}"; do
       enumerate_flag="--enumerate_initial_state"
     fi
 
-    python3 -m viplan.experiments.benchmark_blocksworld_plan \
+    history_flag=""
+    if [[ "$INCLUDE_PROMPT_HISTORY" == "true" || "$INCLUDE_PROMPT_HISTORY" == true ]]; then
+      history_flag="--include_prompt_history"
+    fi
+
+    python3 -m viplan.experiments.benchmark_vlm_as_grounder \
       --model_name "$MODEL" \
-      --log_level "debug" \
+      --log_level "info" \
       --root_path "$ROOT_PATH" \
       --prompt_path "$PROMPT_PATH" \
+      --domain_name "viplan-bw" \
       --domain_file "$DOMAIN_FILE" \
       --problems_dir "$PROBLEMS_DIR" \
       --output_dir "$OUTPUT_DIR" \
       --seed "$SEED" \
       --enum_batch_size "$ENUM_BATCH_SIZE" \
       --fail_probability "$FAIL_PROBABILITY" \
-      $gpu_flag $enumerate_flag
+      $gpu_flag $enumerate_flag $history_flag
 
   done
 done

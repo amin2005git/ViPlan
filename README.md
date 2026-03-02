@@ -40,7 +40,6 @@ If you wish to use Flash Attention, it needs to be installed separately with the
 
 ```bash
 pip install flash-attn --no-build-isolation
-pip install flashinfer-python -i https://flashinfer.ai/whl/cu124/torch2.6/
 ```
 
 > [!WARNING]

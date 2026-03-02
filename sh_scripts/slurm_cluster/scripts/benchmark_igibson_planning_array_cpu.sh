@@ -10,6 +10,7 @@ mkdir -p ./slurm
 
 # Define the list of models and problem splits.
 models=(
+  "gpt-5.2"
   "gpt-4.1"
   "gpt-4.1-nano"
 )
@@ -33,6 +34,7 @@ model_short="${MODEL##*/}"
 SEED=1                        # default seed value
 ENUM_BATCH_SIZE=4             # default batch size
 PROMPT_PATH="data/prompts/benchmark/igibson/prompt.md"
+INCLUDE_PROMPT_HISTORY=false
 
 # Argument parsing for additional flags (if any)
 while [[ $# -gt 0 ]]; do
@@ -48,6 +50,10 @@ while [[ $# -gt 0 ]]; do
     --enum_batch_size)
       ENUM_BATCH_SIZE="$2"
       shift 2
+      ;;
+    --include_prompt_history)
+      INCLUDE_PROMPT_HISTORY="true"
+      shift
       ;;
     --use_cot_prompt)
       PROMPT_PATH="data/prompts/benchmark/igibson/prompt_cot.md"
@@ -92,13 +98,20 @@ else
   OUTPUT_DIR="results/planning/igibson/predicates/${PROBLEM_SPLIT}/${model_short}"
 fi
 
-python3 -m viplan.experiments.benchmark_igibson_plan \
+history_flag=""
+if [[ "$INCLUDE_PROMPT_HISTORY" == "true" || "$INCLUDE_PROMPT_HISTORY" == true ]]; then
+  history_flag="--include_prompt_history"
+fi
+
+python3 -m viplan.experiments.benchmark_vlm_as_grounder \
     --base_url "${BASE_URL}" \
     --model_name "${MODEL}" \
+  --domain_name "viplan-hh" \
     --domain_file  "$DOMAIN_FILE"\
     --problems_dir "$PROBLEMS_DIR" \
     --prompt_path "$PROMPT_PATH" \
     --output_dir "$OUTPUT_DIR" \
     --max_steps "$MAX_STEPS" \
     --seed "$SEED" \
-    --enum_batch_size "$ENUM_BATCH_SIZE"
+    --enum_batch_size "$ENUM_BATCH_SIZE" \
+    $history_flag

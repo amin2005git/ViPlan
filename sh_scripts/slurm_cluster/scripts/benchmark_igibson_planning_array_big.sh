@@ -4,14 +4,16 @@
 #SBATCH --mem=160G
 #SBATCH --gres=gpu:2
 #SBATCH --output=./slurm/%A_%a.out
-#SBATCH --array=0-14
-
-mkdir -p ./slurm
+#SBATCH --array=0-26
 
 # Define the list of models and problem splits.
 models=(
   "OpenGVLab/InternVL3-78B"
+  "OpenGVLab/InternVL3_5-30B-A3B"
+  "OpenGVLab/InternVL3_5-38B"
   "Qwen/Qwen2.5-VL-72B-Instruct"
+  "Qwen/Qwen3-VL-30B-A3B-Instruct"
+  "Qwen/Qwen3-VL-32B-Instruct"
   "google/gemma-3-27b-it"
   "llava-hf/llava-onevision-qwen2-72b-ov-hf"
   "CohereLabs/aya-vision-32b"
@@ -36,6 +38,7 @@ model_short="${MODEL##*/}"
 SEED=1                        # default seed value
 ENUM_BATCH_SIZE=4             # default batch size
 PROMPT_PATH="data/prompts/benchmark/igibson/prompt.md"
+INCLUDE_PROMPT_HISTORY=false
 
 # Argument parsing for additional flags (if any)
 while [[ $# -gt 0 ]]; do
@@ -51,6 +54,10 @@ while [[ $# -gt 0 ]]; do
     --enum_batch_size)
       ENUM_BATCH_SIZE="$2"
       shift 2
+      ;;
+    --include_prompt_history)
+      INCLUDE_PROMPT_HISTORY="true"
+      shift
       ;;
     --use_cot_prompt)
       PROMPT_PATH="data/prompts/benchmark/igibson/prompt_cot.md"
@@ -95,9 +102,15 @@ else
   OUTPUT_DIR="results/planning/igibson/predicates/${PROBLEM_SPLIT}/${model_short}"
 fi
 
-python3 -m viplan.experiments.benchmark_igibson_plan \
+history_flag=""
+if [[ "$INCLUDE_PROMPT_HISTORY" == "true" || "$INCLUDE_PROMPT_HISTORY" == true ]]; then
+  history_flag="--include_prompt_history"
+fi
+
+python3 -m viplan.experiments.benchmark_vlm_as_grounder \
     --base_url "${BASE_URL}" \
     --model_name "${MODEL}" \
+  --domain_name "viplan-hh" \
     --domain_file  "$DOMAIN_FILE"\
     --problems_dir "$PROBLEMS_DIR" \
     --prompt_path "$PROMPT_PATH" \
@@ -105,4 +118,5 @@ python3 -m viplan.experiments.benchmark_igibson_plan \
     --max_steps "$MAX_STEPS" \
     --seed "$SEED" \
     --tensor_parallel_size 2 \
-    --enum_batch_size "$ENUM_BATCH_SIZE"
+    --enum_batch_size "$ENUM_BATCH_SIZE" \
+    $history_flag

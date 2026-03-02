@@ -15,13 +15,14 @@ from collections import defaultdict
 from viplan.code_helpers import get_logger
 from viplan.planning.conversion import predicates_to_numpy, state_to_bird, _sort_columns
 from viplan.rendering.blocksworld.blocks import State
+from viplan.planning.planning_simulator import PlanningSimulator
 
 from unified_planning.model.object import Object
 from unified_planning.plans.plan import ActionInstance
 
 from fasteners import InterProcessLock
 
-class BlocksworldSimulator():
+class BlocksworldSimulator(PlanningSimulator):
     def __init__(self, problem: unified_planning.model.Problem, 
                  root_path: os.PathLike,
                  fail_probability: float = 0.0,
@@ -30,6 +31,7 @@ class BlocksworldSimulator():
                  seed=None,
                  use_gpu_rendering=True):
         
+        super().__init__(problem)
         self.logger = logger
         # Random is used within the render_state to wiggle the rotation of the blocks
         self.seed = seed
@@ -82,31 +84,7 @@ class BlocksworldSimulator():
     @property
     def bird_str(self):
         return state_to_bird(self.np_state)
-    
-    @property
-    def goal_fluents(self):
-        goal_predicates = self.problem.goals[0] # Assuming there are just a set of "ands" in the goal, does not support single predicate goals or negations (as they never happen in the dataset)
-        # TODO move over logic from the igibson client that supports negations
-        assert goal_predicates.is_and()
-        for goal in goal_predicates.args:
-            assert goal.is_fluent_exp(), "Goal structure was not a simple conjunction of fluents"
-        goal_fluents = goal_predicates.args
-        return goal_fluents
-    
-    @property
-    def goal_reached(self):
-        goal_fluents = self.goal_fluents
-        for fluent in goal_fluents:
-            fluent_name = fluent.fluent().name
-            fluent_args = [a.object().name for a in fluent.args]
-            if not self.state[fluent_name][','.join(fluent_args)]:
-                self.logger.debug(f"Goal fluent {fluent_name} with args {fluent_args} not satisfied")
-                return False
-        
-        self.logger.info("Goal reached")
-        return True
-            
-    
+
     def _init_state_from_problem(self):
         self.all_objects = {str(self.problem.user_types[type_]): list(self.problem.objects(self.problem.user_types[type_])) for type_ in range(len(self.problem.user_types))}
         self.state = {}
@@ -135,8 +113,6 @@ class BlocksworldSimulator():
         np_arr = np.flip(np_arr, axis=1).T
         return str(np_arr)
     
-    import io
-
     def _label_columns(self, image, column_labels=None, add_lines=True):
         
         if column_labels is None:
@@ -287,32 +263,6 @@ class BlocksworldSimulator():
                     leftof[f"{c},{r}"] = True
                     
         return state
-    
-    # Recursively check the truth value of a node, which can contain either a fluent (predicate with arguments) or a logical operator
-    # The state argument is needed because when applying effects the truth value of a fluent needs to be checked from the state BEFORE the effect was applied, since self.state will have incomplete updates
-    def _check_value(self, node, grounded_args, state=None):
-        if state is None:
-            state = self.state
-        if node.is_and():
-            return all([self._check_value(arg, grounded_args, state) for arg in node.args])
-        elif node.is_or():
-            return any([self._check_value(arg, grounded_args, state) for arg in node.args])
-        elif node.is_not():
-            return not self._check_value(node.args[0], grounded_args, state)
-        elif node.is_equals():
-            arg1, arg2 = node.args
-            if arg1.is_parameter_exp() or arg1.is_variable_exp() and arg2.is_parameter_exp() or arg2.is_variable_exp():
-                return grounded_args[str(arg1)] == grounded_args[str(arg2)]
-            else:
-                return self._check_value(arg1, grounded_args, state) == self._check_value(arg2, grounded_args, state) 
-        elif node.is_fluent_exp():
-            fluent_name = node.fluent().name
-            arg_names = [str(arg) for arg in node.args]
-            args = [grounded_args[arg] for arg in arg_names]
-            value = state[fluent_name][','.join(args)]
-            return value if isinstance(value, bool) else value.is_true()
-        else:
-            raise ValueError("Unknown node type", node)
 
     # Apply a fluent effect to the state -> check the grounded arguments and update the truth value of the fluent
     def _apply_fluent(self, effect, fluent, grounded_args, state):

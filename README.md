@@ -118,7 +118,7 @@ After this, the iGibson environment is ready to be used. For the benchmark, we u
 
 ## Benchmark
 
-To run the benchmark, we provide bash scripts to run locally as well as SLURM scripts that can be used to run the experiments on a cluster. The scripts are located in the `sh_scripts` folder. If you are using a different cluster manager, you may need to modify the scripts at `sh_scripts/slurm_cluster` accordingly. You could also directly run the Python scripts in the `viplan/experiments` directory.
+### API keys
 
 In order to run some open-source models, you might need to accept their conditions on the huggingface hub. Then, you can include your token in the bash environment by running the following command:
 
@@ -134,6 +134,123 @@ export GEMINI_API_KEY=<your_key>
 export ANTHROPIC_API_KEY=<your_key>
 ```
 
+### Running experiments
+
+The benchmark consists of two main experiment types, each implemented as an environment-agnostic Python script:
+
+- **VLM-as-Grounder** (`viplan.experiments.benchmark_vlm_as_grounder`): The VLM predicts symbolic predicates from visual observations, which are then used by a classical planner to generate actions.
+- **VLM-as-Planner** (`viplan.experiments.benchmark_vlm_as_planner`): The VLM directly outputs actions from visual observations.
+
+Both scripts work with any supported environment by specifying the `--domain_name` parameter (`viplan-bw` for Blocksworld, `viplan-hh` for Household/iGibson).
+
+#### VLM-as-Grounder
+
+```bash
+python3 -m viplan.experiments.benchmark_vlm_as_grounder \
+  --model_name "OpenGVLab/InternVL3-8B" \
+  --domain_name "viplan-bw" \
+  --domain_file "data/planning/blocksworld/domain.pddl" \
+  --problems_dir "data/planning/blocksworld/problems/simple" \
+  --prompt_path "data/prompts/benchmark/blocksworld/prompt.md" \
+  --root_path "." \
+  --output_dir "results/my_experiment" \
+  --seed 1
+```
+
+**Experiment variants for VLM-as-Grounder:**
+
+| Variant | Flag(s) | Description |
+|---------|------|-------------|
+| Default | *(none)* | Standard Yes/No QA prompt (`prompt.md`) |
+| Chain-of-Thought (CoT) | `--use_cot_prompt` (shell scripts) | Uses the CoT prompt variant (`prompt_cot.md`) |
+| With memory (Mem) | `--include_prompt_history` | Injects previous-step failure context into the VLM prompt |
+| Mem + CoT | `--include_prompt_history --use_cot_prompt` | Combines CoT prompting with memory |
+
+#### VLM-as-Planner
+
+```bash
+python3 -m viplan.experiments.benchmark_vlm_as_planner \
+  --model_name "OpenGVLab/InternVL3-8B" \
+  --domain_name "viplan-bw" \
+  --domain_file "data/planning/blocksworld/domain.pddl" \
+  --problems_dir "data/planning/blocksworld/problems/simple" \
+  --prompt_path "data/prompts/planning/vila_blocksworld_json.md" \
+  --root_path "." \
+  --output_dir "results/my_experiment" \
+  --max_steps 10 \
+  --seed 1
+```
+
+**Experiment variants for VLM-as-Planner:**
+
+| Variant | Flag(s) | Prompt selected |
+|---------|---------|-----------------|
+| Default | *(none)* | `vila_{env}_json.md` |
+| Chain-of-Thought (CoT) | `--use_cot_prompt` | `vila_{env}_json_cot.md` |
+| Act | `--act_prompt` | `act_{env}_json.md` |
+| Act + CoT | `--use_cot_prompt --act_prompt` | `react_{env}_json.md` |
+
+where `{env}` is `blocksworld` or `igibson`. The prompt is selected automatically by the shell scripts; when running Python directly, pass the desired prompt via `--prompt_path`.
+
+#### iGibson-specific notes
+
+For iGibson experiments, replace `--root_path` with `--base_url` pointing to the running iGibson server:
+
+```bash
+python3 -m viplan.experiments.benchmark_vlm_as_grounder \
+  --model_name "OpenGVLab/InternVL3-8B" \
+  --domain_name "viplan-hh" \
+  --domain_file "data/planning/igibson/domain.pddl" \
+  --problems_dir "data/planning/igibson/simple" \
+  --prompt_path "data/prompts/benchmark/igibson/prompt.md" \
+  --base_url "http://localhost:8900" \
+  --output_dir "results/my_experiment" \
+  --seed 1
+```
+
+An oracle planner baseline is also available for iGibson:
+
+```bash
+python3 -m viplan.experiments.benchmark_igibson_oracle \
+  --base_url "http://localhost:8900" \
+  --domain_file "data/planning/igibson/domain.pddl" \
+  --problems_dir "data/planning/igibson/simple" \
+  --output_dir "results/oracle" \
+  --max_steps 10 \
+  --seed 1
+```
+
+> [!NOTE]
+> The iGibson environment uses a client-server architecture. The simulation server must be started inside the Apptainer container before running experiments. See the [iGibson setup](#igibson) section and the scripts in `sh_scripts/` for details on starting the server.
+
+#### Using the shell scripts
+
+We also provide bash scripts to run experiments locally as well as SLURM scripts to run on a cluster. The scripts are located in the `sh_scripts` folder. See the [sh_scripts README](sh_scripts/README.md) for more details on available flags and how to use them. If you are using a different cluster manager, you may need to modify the SLURM scripts at `sh_scripts/slurm_cluster` accordingly.
+
 ## Results
 
 We include all the results from the experiments reported in the paper in the `results` folder. To process and visualize them, we provide Jupyter notebooks in the `notebooks` folder. This reproduces exactly all the Figures and Tables reported in the paper.
+
+## Extending ViPlan
+
+ViPlan can be easily extended by the community to include new domains, models and methods.
+
+### Adding new domains
+
+In order to add a new domain, the following steps are needed:
+
+- Add a new subfolder in `data/planning/` with a PDDL domain file and per-split problem files.
+- Implement the domain simulator under `viplan/planning/`, as a subclass of `PlanningSimulator`.
+- Update `get_domain_config` in `viplan/code_helpers.py` with the domain-specific logic.
+- Add prompts under `data/prompts/`.
+
+Once this is done, the `sh_scripts` can run the new domain with minimal changes.
+
+### Adding new models
+
+ViPlan provides integration with vLLM to run open-source VLMs. With updates to the framework, this should support new models as they are released, with minimal changes needed. 
+We also provide interfaces with the OpenAI, Gemini and Anthropic APIs to run closed-source models, which should be able to support new models from these providers with minimal changes.
+
+### Adding new methods
+
+Edits to the existing VLM-as-planner and VLM-as-grounder methods can be made in the `viplan/experiments` folder. To add a completely new method, a new script can be added to the same folder, following the same structure as the existing ones.

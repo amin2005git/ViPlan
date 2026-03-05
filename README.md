@@ -150,7 +150,9 @@ The benchmark has three difficulty levels — **simple**, **medium**, and **hard
 - **ViPlan-BW:** Each of the 75 instances is a separate PDDL file (25 files per difficulty level).
 - **ViPlan-HH:** The 75 instances are represented differently. There are only 16 PDDL files in total (5–6 per difficulty level), each defining a *task template* (the objects and goal). The 25 instances per difficulty level come from pairing each template with multiple `(scene_id, instance_id)` combinations listed in `metadata.json`. A `scene_id` (e.g. `"Ihlen_0_int"`) identifies a specific iGibson house layout; an `instance_id` (e.g. `0`, `20`) selects a particular object placement within that house. Each unique `(PDDL file, scene_id, instance_id)` triplet is one problem instance.
 
-**Natural language goals:** The goals are defined symbolically in the PDDL files (e.g. `(ontop hardback_1 shelf_1)`). There are no pre-stored natural language goal strings in the repository. At runtime, the experiment scripts translate PDDL goal conditions into plain English automatically using the `goal_templates` dictionary in `viplan/code_helpers.py`.
+**Goals and the VLM:** Goals are defined symbolically in the PDDL files (e.g. `(ontop hardback_1 shelf_1)`). At runtime the experiment scripts translate those conditions into plain English using the `goal_templates` dictionary in `viplan/code_helpers.py`, and insert the result into the prompt at the `{goal_string}` placeholder before calling the VLM. The VLM **receives** the goal — it is told what to achieve — but it does not generate or infer the goal itself.
+
+**How problems are created:** ViPlan-BW problems are generated programmatically using `viplan/planning/blocksworld_problem_generator.py` (random block sampling, random initial/goal layout, classical-planner validation for reachability and plan-length difficulty). ViPlan-HH problems use human-authored PDDL task templates from the iGibson Activity Benchmark, each paired with different house scenes and object placements.
 
 See [data/README.md](data/README.md) for the full breakdown.
 

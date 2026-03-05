@@ -25,7 +25,14 @@ Each `metadata.json` maps a PDDL filename to:
 - `activity_name`: the iGibson activity name used to load the task in the simulator
 - `scene_instance_pairs`: list of `[scene_id, instance_id]` pairs — one per problem instance for that template
 
-**Natural language goals:** Goals are defined symbolically in the PDDL files. There are no pre-stored natural language strings in the repository. The experiment scripts translate PDDL goal conditions to plain English at runtime using the `goal_templates` dictionary in `viplan/code_helpers.py`.
+**How the goal is given to the VLM:**
+
+Goals are defined symbolically in the PDDL files (e.g. `(ontop hardback_1 shelf_1)`). At runtime the experiment scripts translate those PDDL goal conditions into plain English using the `goal_templates` dictionary in `viplan/code_helpers.py`, and insert that text into the prompt at the `{goal_string}` placeholder before calling the VLM. So the VLM **receives** the goal as part of its prompt — it is told what the goal is, and its task is to plan or execute actions to achieve it. The VLM never generates or infers the goal on its own.
+
+**How problems are created:**
+
+- **ViPlan-BW (Blocksworld):** Problems are generated programmatically using `viplan/planning/blocksworld_problem_generator.py`. The generator randomly samples a set of colored blocks, creates a random initial layout (blocks distributed across columns), then independently generates a random goal layout. It validates each candidate problem with a classical planner to ensure the goal is reachable and that the plan length falls within difficulty-appropriate bounds (controlling simple/medium/hard). Duplicate problems are discarded and replaced. The resulting PDDL files are stored directly in `data/planning/blocksworld/problems/{simple,medium,hard}/`.
+- **ViPlan-HH (Household/iGibson):** Problems are not generated programmatically. The PDDL task templates are taken from the iGibson Activity Benchmark — a set of real household activities (e.g. sorting books, cleaning drawers) whose goals and object types were defined by humans. Each template is paired with different iGibson house scenes (`scene_id`) and object placement seeds (`instance_id`) to form the 25 instances per difficulty level.
 
 **Summary of ViPlan-HH problems:**
 

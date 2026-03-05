@@ -1,7 +1,6 @@
 {
     "sorting_books_simple.pddl": {
         "activity_name": "sorting_books",
-        "natural_language_goal": "Place the hardback on top of the shelf.",
         "scene_instance_pairs": [
             [
                 "Ihlen_0_int",
@@ -27,7 +26,6 @@
     },
     "cleaning_out_drawers_simple.pddl": {
         "activity_name": "cleaning_out_drawers",
-        "natural_language_goal": "Place the bowl on top of the sink.",
         "scene_instance_pairs": [
             [
                 "Benevolence_1_int",
@@ -53,7 +51,6 @@
     },
     "locking_every_door_simple.pddl": {
         "activity_name": "locking_every_door",
-        "natural_language_goal": "Close both doors.",
         "scene_instance_pairs": [
             [
                 "Merom_1_int",
@@ -79,7 +76,6 @@
     },
     "locking_every_window_simple.pddl": {
         "activity_name": "locking_every_window",
-        "natural_language_goal": "Close all three windows.",
         "scene_instance_pairs": [
             [
                 "Merom_1_int",
@@ -105,7 +101,6 @@
     },
     "packing_food_for_work_simple.pddl": {
         "activity_name": "packing_food_for_work",
-        "natural_language_goal": "Pack the snack food inside the carton.",
         "scene_instance_pairs": [
             [
                 "Beechwood_0_int",

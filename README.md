@@ -136,12 +136,23 @@ export ANTHROPIC_API_KEY=<your_key>
 
 ### Problem instances
 
-Each benchmark split (simple / medium / hard) contains **25 problem instances**:
+The benchmark has three difficulty levels — **simple**, **medium**, and **hard** — each containing 25 problem instances. Each problem instance is a concrete task that the agent must solve starting from a specific initial scene.
 
-- **ViPlan-BW (Blocksworld):** 25 independent PDDL files per split (75 files total).
-- **ViPlan-HH (Household/iGibson):** 16 PDDL *template* files across all splits (5–6 per split), each combined with multiple `(scene_id, instance_id)` pairs listed in the split's `metadata.json`. Together, each split sums to 25 problem instances (75 total).
+**Total problem instances per domain:**
 
-The `metadata.json` also includes a human-readable `natural_language_goal` for every problem, describing the goal state in plain English. See [data/README.md](data/README.md) for the full breakdown.
+| Domain | Simple | Medium | Hard | **Total** |
+|--------|--------|--------|------|-----------|
+| ViPlan-BW (Blocksworld) | 25 | 25 | 25 | **75** |
+| ViPlan-HH (Household/iGibson) | 25 | 25 | 25 | **75** |
+
+**How problems are stored:**
+
+- **ViPlan-BW:** Each of the 75 instances is a separate PDDL file (25 files per difficulty level).
+- **ViPlan-HH:** The 75 instances are represented differently. There are only 16 PDDL files in total (5–6 per difficulty level), each defining a *task template* (the objects and goal). The 25 instances per difficulty level come from pairing each template with multiple `(scene_id, instance_id)` combinations listed in `metadata.json`. A `scene_id` (e.g. `"Ihlen_0_int"`) identifies a specific iGibson house layout; an `instance_id` (e.g. `0`, `20`) selects a particular object placement within that house. Each unique `(PDDL file, scene_id, instance_id)` triplet is one problem instance.
+
+**Natural language goals:** The goals are defined symbolically in the PDDL files (e.g. `(ontop hardback_1 shelf_1)`). There are no pre-stored natural language goal strings in the repository. At runtime, the experiment scripts translate PDDL goal conditions into plain English automatically using the `goal_templates` dictionary in `viplan/code_helpers.py`.
+
+See [data/README.md](data/README.md) for the full breakdown.
 
 ### Running experiments
 

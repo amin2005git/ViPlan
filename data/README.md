@@ -8,21 +8,31 @@ In the following folder, you can find:
 
 ### ViPlan-HH Problem Structure
 
-The Household (iGibson) benchmark uses a different structure from Blocksworld:
+The benchmark has three difficulty levels: **simple**, **medium**, and **hard**. Each difficulty level contains 25 problem instances. A *problem instance* is a concrete task: a specific set of objects, their initial positions, and a goal state that the agent must achieve.
 
-- **Blocksworld (ViPlan-BW):** Each split contains 25 independent PDDL files, one per problem instance.
-- **Household (ViPlan-HH):** Each split contains a smaller set of PDDL *template* files (5–6 per split), each paired with multiple scene/instance combinations listed in a `metadata.json` file. Together, each split sums to **25 problem instances**.
+The two domains store their problems differently:
 
-The `metadata.json` in each split (`simple/`, `medium/`, `hard/`) maps every PDDL file to:
-- `activity_name`: the iGibson activity identifier used by the simulator
-- `natural_language_goal`: a human-readable description of the goal for that problem
-- `scene_instance_pairs`: a list of `[scene_id, instance_id]` pairs that constitute the 25 problem instances for the split
+- **ViPlan-BW (Blocksworld):** Every instance is a separate PDDL file — 25 files per difficulty level, 75 files in total.
+- **ViPlan-HH (Household/iGibson):** There are only 16 PDDL files in total (5–6 per difficulty level). Each file defines a *task template* — the object types and goal conditions. The 25 instances per difficulty level come from running each template in multiple different houses and object placements, recorded as `(scene_id, instance_id)` pairs in `metadata.json`.
+
+**What `scene_id` and `instance_id` mean:**
+
+iGibson includes multiple photorealistic house scenes. A `scene_id` (e.g. `"Ihlen_0_int"`, `"Beechwood_0_int"`) identifies a specific house layout. Within a house, objects can be placed in different random configurations; an `instance_id` (e.g. `0`, `20`, `21`) selects one such configuration. Each unique `(PDDL file, scene_id, instance_id)` triplet is one benchmark problem instance.
+
+**What `metadata.json` contains:**
+
+Each `metadata.json` maps a PDDL filename to:
+- `activity_name`: the iGibson activity name used to load the task in the simulator
+- `scene_instance_pairs`: list of `[scene_id, instance_id]` pairs — one per problem instance for that template
+
+**Natural language goals:** Goals are defined symbolically in the PDDL files. There are no pre-stored natural language strings in the repository. The experiment scripts translate PDDL goal conditions to plain English at runtime using the `goal_templates` dictionary in `viplan/code_helpers.py`.
 
 **Summary of ViPlan-HH problems:**
 
-| Split  | PDDL templates | Problem instances |
-|--------|---------------|-------------------|
-| Simple | 5             | 25                |
-| Medium | 6             | 25                |
-| Hard   | 5             | 25                |
-| **Total** | **16**     | **75**            |
+| Difficulty | PDDL templates | Problem instances |
+|------------|---------------|-------------------|
+| Simple     | 5             | 25                |
+| Medium     | 6             | 25                |
+| Hard       | 5             | 25                |
+| **Total**  | **16**        | **75**            |
+

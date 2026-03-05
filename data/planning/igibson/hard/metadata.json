@@ -1,6 +1,7 @@
 {
     "organizing_file_cabinet_hard.pddl": {
         "activity_name": "organizing_file_cabinet",
+        "natural_language_goal": "Place the marker on top of the table and put document_1 and document_3 inside the cabinet.",
         "scene_instance_pairs": [
             [
                 "Beechwood_0_int",
@@ -22,6 +23,7 @@
     },
     "cleaning_out_drawers_hard.pddl": {
         "activity_name": "cleaning_out_drawers",
+        "natural_language_goal": "Place both bowls and the piece of cloth on top of the sink.",
         "scene_instance_pairs": [
             [
                 "Benevolence_1_int",
@@ -47,6 +49,7 @@
     },
     "sorting_groceries_hard.pddl": {
         "activity_name": "sorting_groceries",
+        "natural_language_goal": "Put one apple inside the refrigerator, place one orange on top of the table, and position the other orange next to it.",
         "scene_instance_pairs": [
             [
                 "Wainscott_0_int",
@@ -80,6 +83,7 @@
     },
     "organizing_boxes_in_garage_hard.pddl": {
         "activity_name": "organizing_boxes_in_garage",
+        "natural_language_goal": "Put the ball and one plate inside the first carton.",
         "scene_instance_pairs": [
             [
                 "Ihlen_0_int",
@@ -105,6 +109,7 @@
     },
     "putting_away_toys_hard.pddl": {
         "activity_name": "putting_away_toys",
+        "natural_language_goal": "Put plaything_1, plaything_2, and plaything_4 inside the first carton.",
         "scene_instance_pairs": [
             [
                 "Benevolence_1_int",

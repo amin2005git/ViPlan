@@ -134,6 +134,15 @@ export GEMINI_API_KEY=<your_key>
 export ANTHROPIC_API_KEY=<your_key>
 ```
 
+### Problem instances
+
+Each benchmark split (simple / medium / hard) contains **25 problem instances**:
+
+- **ViPlan-BW (Blocksworld):** 25 independent PDDL files per split (75 files total).
+- **ViPlan-HH (Household/iGibson):** 16 PDDL *template* files across all splits (5–6 per split), each combined with multiple `(scene_id, instance_id)` pairs listed in the split's `metadata.json`. Together, each split sums to 25 problem instances (75 total).
+
+The `metadata.json` also includes a human-readable `natural_language_goal` for every problem, describing the goal state in plain English. See [data/README.md](data/README.md) for the full breakdown.
+
 ### Running experiments
 
 The benchmark consists of two main experiment types, each implemented as an environment-agnostic Python script:

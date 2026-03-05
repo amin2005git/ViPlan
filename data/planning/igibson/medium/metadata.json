@@ -1,6 +1,7 @@
 {
     "sorting_books_medium.pddl": {
         "activity_name": "sorting_books",
+        "natural_language_goal": "Place the hardback and the book on top of the shelf.",
         "scene_instance_pairs": [
             [
                 "Pomaria_1_int",
@@ -22,6 +23,7 @@
     },
     "cleaning_out_drawers_medium.pddl": {
         "activity_name": "cleaning_out_drawers",
+        "natural_language_goal": "Place the bowl and the spoon on top of the sink.",
         "scene_instance_pairs": [
             [
                 "Benevolence_1_int",
@@ -35,6 +37,7 @@
     },
     "packing_food_for_work_medium.pddl": {
         "activity_name": "packing_food_for_work",
+        "natural_language_goal": "Pack the sandwich and the snack food inside the carton.",
         "scene_instance_pairs": [
             [
                 "Beechwood_0_int",
@@ -56,6 +59,7 @@
     },
     "putting_away_toys_medium.pddl": {
         "activity_name": "putting_away_toys",
+        "natural_language_goal": "Put plaything_2 and plaything_4 inside the carton.",
         "scene_instance_pairs": [
             [
                 "Benevolence_1_int",
@@ -81,6 +85,7 @@
     },
     "collect_misplaced_items_medium.pddl": {
         "activity_name": "collect_misplaced_items",
+        "natural_language_goal": "Place the gym shoe and one sock on top of the second table.",
         "scene_instance_pairs": [
             [
                 "Beechwood_0_int",
@@ -102,6 +107,7 @@
     },
     "sorting_groceries_medium.pddl": {
         "activity_name": "sorting_groceries",
+        "natural_language_goal": "Put one apple inside the refrigerator and place one orange on top of the table.",
         "scene_instance_pairs": [
             [
                 "Beechwood_0_int",
